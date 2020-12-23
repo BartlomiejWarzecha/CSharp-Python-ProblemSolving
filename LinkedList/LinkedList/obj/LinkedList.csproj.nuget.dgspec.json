@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\bartl\\source\\repos\\LinkedList\\LinkedList\\LinkedList.csproj": {}
+    "C:\\Users\\bartl\\OneDrive\\Desktop\\OneYearOfCode\\C#-SolvingProblems\\LinkedList\\LinkedList\\LinkedList.csproj": {}
   },
   "projects": {
-    "C:\\Users\\bartl\\source\\repos\\LinkedList\\LinkedList\\LinkedList.csproj": {
+    "C:\\Users\\bartl\\OneDrive\\Desktop\\OneYearOfCode\\C#-SolvingProblems\\LinkedList\\LinkedList\\LinkedList.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\bartl\\source\\repos\\LinkedList\\LinkedList\\LinkedList.csproj",
+        "projectUniqueName": "C:\\Users\\bartl\\OneDrive\\Desktop\\OneYearOfCode\\C#-SolvingProblems\\LinkedList\\LinkedList\\LinkedList.csproj",
         "projectName": "LinkedList",
-        "projectPath": "C:\\Users\\bartl\\source\\repos\\LinkedList\\LinkedList\\LinkedList.csproj",
+        "projectPath": "C:\\Users\\bartl\\OneDrive\\Desktop\\OneYearOfCode\\C#-SolvingProblems\\LinkedList\\LinkedList\\LinkedList.csproj",
         "packagesPath": "C:\\Users\\bartl\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\bartl\\source\\repos\\LinkedList\\LinkedList\\obj\\",
+        "outputPath": "C:\\Users\\bartl\\OneDrive\\Desktop\\OneYearOfCode\\C#-SolvingProblems\\LinkedList\\LinkedList\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\bartl\\AppData\\Roaming\\NuGet\\NuGet.Config",

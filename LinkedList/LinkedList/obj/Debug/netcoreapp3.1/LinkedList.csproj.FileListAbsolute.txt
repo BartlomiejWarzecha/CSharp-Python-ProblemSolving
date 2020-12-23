@@ -2,3 +2,16 @@ C:\Users\bartl\source\repos\LinkedList\LinkedList\obj\Debug\netcoreapp3.1\Linked
 C:\Users\bartl\source\repos\LinkedList\LinkedList\obj\Debug\netcoreapp3.1\LinkedList.AssemblyInfoInputs.cache
 C:\Users\bartl\source\repos\LinkedList\LinkedList\obj\Debug\netcoreapp3.1\LinkedList.AssemblyInfo.cs
 C:\Users\bartl\source\repos\LinkedList\LinkedList\obj\Debug\netcoreapp3.1\LinkedList.csproj.CoreCompileInputs.cache
+C:\Users\bartl\OneDrive\Desktop\OneYearOfCode\C#-SolvingProblems\LinkedList\LinkedList\bin\Debug\netcoreapp3.1\LinkedList.exe
+C:\Users\bartl\OneDrive\Desktop\OneYearOfCode\C#-SolvingProblems\LinkedList\LinkedList\bin\Debug\netcoreapp3.1\LinkedList.deps.json
+C:\Users\bartl\OneDrive\Desktop\OneYearOfCode\C#-SolvingProblems\LinkedList\LinkedList\bin\Debug\netcoreapp3.1\LinkedList.runtimeconfig.json
+C:\Users\bartl\OneDrive\Desktop\OneYearOfCode\C#-SolvingProblems\LinkedList\LinkedList\bin\Debug\netcoreapp3.1\LinkedList.runtimeconfig.dev.json
+C:\Users\bartl\OneDrive\Desktop\OneYearOfCode\C#-SolvingProblems\LinkedList\LinkedList\bin\Debug\netcoreapp3.1\LinkedList.dll
+C:\Users\bartl\OneDrive\Desktop\OneYearOfCode\C#-SolvingProblems\LinkedList\LinkedList\bin\Debug\netcoreapp3.1\LinkedList.pdb
+C:\Users\bartl\OneDrive\Desktop\OneYearOfCode\C#-SolvingProblems\LinkedList\LinkedList\obj\Debug\netcoreapp3.1\LinkedList.csprojAssemblyReference.cache
+C:\Users\bartl\OneDrive\Desktop\OneYearOfCode\C#-SolvingProblems\LinkedList\LinkedList\obj\Debug\netcoreapp3.1\LinkedList.AssemblyInfoInputs.cache
+C:\Users\bartl\OneDrive\Desktop\OneYearOfCode\C#-SolvingProblems\LinkedList\LinkedList\obj\Debug\netcoreapp3.1\LinkedList.AssemblyInfo.cs
+C:\Users\bartl\OneDrive\Desktop\OneYearOfCode\C#-SolvingProblems\LinkedList\LinkedList\obj\Debug\netcoreapp3.1\LinkedList.csproj.CoreCompileInputs.cache
+C:\Users\bartl\OneDrive\Desktop\OneYearOfCode\C#-SolvingProblems\LinkedList\LinkedList\obj\Debug\netcoreapp3.1\LinkedList.dll
+C:\Users\bartl\OneDrive\Desktop\OneYearOfCode\C#-SolvingProblems\LinkedList\LinkedList\obj\Debug\netcoreapp3.1\LinkedList.pdb
+C:\Users\bartl\OneDrive\Desktop\OneYearOfCode\C#-SolvingProblems\LinkedList\LinkedList\obj\Debug\netcoreapp3.1\LinkedList.genruntimeconfig.cache

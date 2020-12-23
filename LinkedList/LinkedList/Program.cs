@@ -2,24 +2,23 @@
 
 namespace LinkedList
 {
-    public class LinkedLis
+    public class LinkedList
     {
 
         Node head;
-
-        public static class Node
+        public  class Node
         {
-            int data;
-            Node next;
+             public int data;
+             public Node next;
 
 
-            Node(int d)
+            public Node(int d)
             {
                 data = d;
                 next = null;
             }
         }
-        public static void printList()
+        public void printList()
         {
 
             Node n = head;
@@ -31,14 +30,28 @@ namespace LinkedList
             }
 
         }
+
+        public void display(Node head) {
+
+            Node currentNode = head;
+
+            while (currentNode != null) 
+            {
+                Console.WriteLine(currentNode.data + " ");
+            }
+        
+        
+        
+        }
         public 
             static void Main(string[] args)
         {
-            LinkedLis firsLinkedList = new LinkedList();
+            LinkedList firsLinkedList = new LinkedList();
 
             firsLinkedList.head = new LinkedList.Node(1);
             Node second = new Node(2);
             Node third = new Node(3);
+
 
             // Linking nodes 
             firsLinkedList.head.next = second;
