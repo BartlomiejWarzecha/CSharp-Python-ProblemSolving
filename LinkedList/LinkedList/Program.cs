@@ -6,11 +6,10 @@ namespace LinkedList
     {
 
         Node head;
-        public  class Node
+        public class Node
         {
-             public int data;
-             public Node next;
-
+            public int data;
+            public Node next;
 
             public Node(int d)
             {
@@ -35,30 +34,52 @@ namespace LinkedList
 
             Node currentNode = head;
 
-            while (currentNode != null) 
+            while (currentNode != null)
             {
                 Console.WriteLine(currentNode.data + " ");
+                currentNode = currentNode.next;
             }
-        
-        
-        
-        }
-        public 
-            static void Main(string[] args)
-        {
-            LinkedList firsLinkedList = new LinkedList();
 
-            firsLinkedList.head = new LinkedList.Node(1);
+        }
+
+        public void insertAtFront(Node newHead)
+        {
+            Node tmp = head;
+            head = newHead;
+            head.next = tmp;
+        }
+
+       public void insertAtEnd(Node newTail)
+        {
+            Node tmp;
+            tmp = head;
+
+            while (tmp != null)
+            {
+                tmp = tmp.next;
+            }
+
+            tmp.next = newTail;
+        } 
+        
+    
+
+          public  static void Main(string[] args)
+        {
+            LinkedList firstLinkedList = new LinkedList();
+
+            firstLinkedList.head = new LinkedList.Node(1);
             Node second = new Node(2);
             Node third = new Node(3);
+            Node insertAtBeggining = new Node(10);
+            Node insertAtEnd = new Node(20);
 
-
-            // Linking nodes 
-            firsLinkedList.head.next = second;
+            firstLinkedList.head.next = second;
             second.next = third;
 
-            firsLinkedList.printList();
-
+            firstLinkedList.insertAtFront(insertAtBeggining);
+            firstLinkedList.insertAtEnd(insertAtEnd);
+            firstLinkedList.printList();
         }
     }
 }
