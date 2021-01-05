@@ -44,6 +44,10 @@ namespace LinkedList
 
         public void insertAtFront(int data)
         {
+            if (head == null) {
+                head = new Node(data);
+            }
+
             Node newHead = new Node(data);
             Node tmp = head;
             head = newHead;
@@ -67,6 +71,7 @@ namespace LinkedList
 
         public void insertAfter(int position, int data) {
 
+
             Node After = new Node(data);
             Node tmp;
             Node previous;
@@ -83,18 +88,39 @@ namespace LinkedList
             previous.next = After;
              
         }
-          public  static void Main(string[] args)
+
+        public void delete(int position) {
+
+            if (position == 0) {
+                head = head.next;
+                head.next = head.next.next;
+                return;
+            }
+
+            Node tmp;
+            tmp = head;
+            
+            for (int i = 0; i < position - 1; i++)
+            {
+                tmp = tmp.next;
+            }
+
+            tmp.next = tmp.next.next;
+        }
+        public  static void Main(string[] args)
         {
             LinkedList firstLinkedList = new LinkedList();
-
+            
             firstLinkedList.head = new LinkedList.Node(1);
             Node second = new Node(2);
             Node third = new Node(3);
+ 
 
             int insertAtBeggining = 10;
             int insertAtEnd = 20;
             int insertAfterValue = 15;
             int insertAfterNodeNumber = 2;
+            int deleteNode = 2;
 
             firstLinkedList.head.next = second;
             second.next = third;
@@ -102,7 +128,9 @@ namespace LinkedList
             firstLinkedList.insertAtFront(insertAtBeggining);
             firstLinkedList.insertAtEnd(insertAtEnd);
             firstLinkedList.insertAfter(insertAfterNodeNumber, insertAfterValue);
+            firstLinkedList.delete(deleteNode);
             firstLinkedList.printList();
+            // firstLinkedList.display(firstLinkedList.head);
         }
     }
 }
