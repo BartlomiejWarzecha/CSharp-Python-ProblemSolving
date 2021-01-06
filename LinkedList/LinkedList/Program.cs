@@ -8,10 +8,10 @@ namespace LinkedList
         Node head;
         public class Node
         {
-            public int data;
+            public Nullable<int> data;
             public Node next;
 
-            public Node(int d)
+            public Node(Nullable<int> d)
             {
                 data = d;
                 next = null;
@@ -20,16 +20,15 @@ namespace LinkedList
         public void printList()
         {
 
-            Node n = head;
-            while (n != null)
+            Node printedNode = head;
+            while (printedNode != null)
             {
-                Console.WriteLine(n.data + " ");
-                n = n.next;
+                Console.WriteLine(printedNode.data + " ");
+                printedNode = printedNode.next;
 
             }
 
         }
-
         public void display(Node head) {
 
             Node currentNode = head;
@@ -89,7 +88,11 @@ namespace LinkedList
              
         }
 
-        public void delete(int position) {
+        public void deleteNodePosition(Nullable<int> position) {
+
+            if (position == null) {
+                return;
+            }
 
             if (position == 0) {
                 head = head.next;
@@ -107,6 +110,38 @@ namespace LinkedList
 
             tmp.next = tmp.next.next;
         }
+
+        public void deleteNodeValue(Nullable<int> value) {
+
+            if (value == null)
+            {
+                return;
+            }
+
+            Node DealitingValue = new Node(value);
+            Node current;
+            Node tmp;
+            tmp = head;
+            current = head;
+
+            while (tmp.next != null)
+            {
+                while (current != DealitingValue ^ current.next != null)
+                {
+
+                    current = current.next;
+
+                }
+                current.next = current.next.next;
+                tmp = current.next;
+
+            }
+
+        }
+
+        public void deleteLinkedList() {
+            head = null;
+        }
         public  static void Main(string[] args)
         {
             LinkedList firstLinkedList = new LinkedList();
@@ -120,7 +155,8 @@ namespace LinkedList
             int insertAtEnd = 20;
             int insertAfterValue = 15;
             int insertAfterNodeNumber = 2;
-            int deleteNode = 2;
+            Nullable<int> deleteNode = 1;
+            Nullable<int> deleteNodeValue = 5;
 
             firstLinkedList.head.next = second;
             second.next = third;
@@ -128,7 +164,9 @@ namespace LinkedList
             firstLinkedList.insertAtFront(insertAtBeggining);
             firstLinkedList.insertAtEnd(insertAtEnd);
             firstLinkedList.insertAfter(insertAfterNodeNumber, insertAfterValue);
-            firstLinkedList.delete(deleteNode);
+            firstLinkedList.deleteNodePosition(deleteNode);
+            firstLinkedList.deleteNodeValue(deleteNodeValue);
+            //firstLinkedList.deleteLinkedList();
             firstLinkedList.printList();
             // firstLinkedList.display(firstLinkedList.head);
         }
