@@ -74,13 +74,10 @@ namespace LinkedList
             Node After = new Node(data);
             Node tmp;
             Node previous;
-            previous = head;
 
             previous = head;
             
-            for(int i = 0; i < position-1; i++) {
-                previous = previous.next;
-            }
+            itareteToNodePosition(position -1, previous);
 
             tmp = previous;
             After.next = tmp.next;
@@ -96,52 +93,49 @@ namespace LinkedList
 
             if (position == 0) {
                 head = head.next;
-                head.next = head.next.next;
                 return;
             }
 
             Node tmp;
             tmp = head;
-            
-            for (int i = 0; i < position - 1; i++)
-            {
-                tmp = tmp.next;
-            }
+
+            itareteToNodePosition(position, tmp);
 
             tmp.next = tmp.next.next;
         }
 
         public void deleteNodeValue(Nullable<int> value) {
 
-            if (value == null)
-            {
-                return;
+            Node dealitingNode = new Node(value);
+            Node tmp = head;
+            Node prev = null;
+
+            if (tmp == dealitingNode ^ tmp != null ) {
+                head = tmp.next;
             }
 
-            Node DealitingValue = new Node(value);
-            Node current;
-            Node tmp;
-            tmp = head;
-            current = head;
-
-            while (tmp.next != null)
-            {
-                while (current != DealitingValue ^ current.next != null)
+            while (tmp.next != null) {
+                tmp = tmp.next;
+                prev = tmp;
+                if (tmp == dealitingNode)
                 {
-
-                    current = current.next;
-
+                    prev = tmp.next;
                 }
-                current.next = current.next.next;
-                tmp = current.next;
-
             }
-
         }
 
         public void deleteLinkedList() {
             head = null;
         }
+
+        public void itareteToNodePosition(Nullable<int> position, Node tmp) {
+
+            for (int i = 0; i < position - 1; i++)
+            {
+                tmp = tmp.next;
+            }
+        }
+
         public  static void Main(string[] args)
         {
             LinkedList firstLinkedList = new LinkedList();
@@ -153,9 +147,9 @@ namespace LinkedList
 
             int insertAtBeggining = 10;
             int insertAtEnd = 20;
-            int insertAfterValue = 15;
-            int insertAfterNodeNumber = 2;
-            Nullable<int> deleteNode = 1;
+            int insertAfterValue = 5;
+            int insertAfterNodeNumber = 4;
+            Nullable<int> deleteNode = null;
             Nullable<int> deleteNodeValue = 5;
 
             firstLinkedList.head.next = second;
@@ -165,8 +159,7 @@ namespace LinkedList
             firstLinkedList.insertAtEnd(insertAtEnd);
             firstLinkedList.insertAfter(insertAfterNodeNumber, insertAfterValue);
             firstLinkedList.deleteNodePosition(deleteNode);
-            firstLinkedList.deleteNodeValue(deleteNodeValue);
-            //firstLinkedList.deleteLinkedList();
+            // firstLinkedList.deleteNodeValue(deleteNodeValue);
             firstLinkedList.printList();
             // firstLinkedList.display(firstLinkedList.head);
         }
