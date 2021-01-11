@@ -27,6 +27,17 @@ namespace LinkedList
             Node currentNode = head;
             printList(currentNode);
         }
+        public int lengthOfLLIterative() {
+            int length = 0;
+            Node tmp;
+            tmp = head;
+            while(tmp != null){
+                length += 1;
+                tmp = tmp.next;
+            }
+            return length;
+        }
+
         public void insertAtFront(int data)
         {
             if (head == null)
@@ -144,6 +155,7 @@ namespace LinkedList
             int insertAfterNodeNumber = 4;
             int? deleteNode = null;
             int? deleteNodeValue = null;
+            int LLlength;
 
             firstLinkedList.head.next = second;
             second.next = third;
@@ -154,6 +166,9 @@ namespace LinkedList
             firstLinkedList.deleteNodeByPosition(deleteNode);
             firstLinkedList.deleteNodeByValue(deleteNodeValue);
             firstLinkedList.printCurrentList();
+
+            LLlength = firstLinkedList.lengthOfLLIterative();
+            Console.WriteLine("This Linked List have " + LLlength + ((LLlength > 1) ? " Nodes" : (LLlength == 0) ? " Nodes so it's empty": " Node"));
             // firstLinkedList.printListBasedOnHead(firstLinkedList.head);
         }
     }
