@@ -8,42 +8,29 @@ namespace LinkedList
         Node head;
         public class Node
         {
-            public Nullable<int> data;
+            public int? data;
             public Node next;
 
-            public Node(Nullable<int> d)
+            public Node(int? d)
             {
                 data = d;
                 next = null;
             }
         }
-        public void printList()
+        public void printCurrentList()
         {
-
             Node printedNode = head;
-            while (printedNode != null)
-            {
-                Console.WriteLine(printedNode.data + " ");
-                printedNode = printedNode.next;
-
-            }
-
+            printList(printedNode);
         }
-        public void display(Node head) {
-
+        public void printListBasedOnHead(Node head)
+        {
             Node currentNode = head;
-
-            while (currentNode != null)
-            {
-                Console.WriteLine(currentNode.data + " ");
-                currentNode = currentNode.next;
-            }
-
+            printList(currentNode);
         }
-
         public void insertAtFront(int data)
         {
-            if (head == null) {
+            if (head == null)
+            {
                 head = new Node(data);
             }
 
@@ -52,8 +39,7 @@ namespace LinkedList
             head = newHead;
             head.next = tmp;
         }
-
-       public void insertAtEnd(int data)
+        public void insertAtEnd(int data)
         {
             Node newTail = new Node(data);
             Node tmp;
@@ -67,90 +53,97 @@ namespace LinkedList
             tmp.next = newTail;
             newTail.next = null;
         }
-
-        public void insertAfter(int position, int data) {
-
-
+        public void insertAfter(int position, int data)
+        {
             Node After = new Node(data);
             Node tmp;
             Node previous;
 
             previous = head;
-            
-            itareteToNodePosition(position -1, previous);
+
+            itareteToNodePosition(position - 1, previous);
 
             tmp = previous;
             After.next = tmp.next;
             previous.next = After;
-             
         }
 
-        public void deleteNodePosition(Nullable<int> position) {
+        public void deleteLinkedList()
+        {
+            head = null;
+        }
 
-            if (position == null) {
+        public void deleteNodeByPosition(int? position)
+        {
+            if (position == null)
+            {
                 return;
             }
 
-            if (position == 0) {
+            if (position == 0)
+            {
                 head = head.next;
                 return;
             }
 
             Node tmp;
             tmp = head;
-
             itareteToNodePosition(position, tmp);
 
             tmp.next = tmp.next.next;
         }
 
-        public void deleteNodeValue(Nullable<int> value) {
-
-            Node dealitingNode = new Node(value);
+        public void deleteNodeByValue(int? value)
+        {
             Node tmp = head;
             Node prev = null;
 
-            if (tmp == dealitingNode ^ tmp != null ) {
+            if (head.data == value && head != null)
+            {
                 head = tmp.next;
             }
 
-            while (tmp.next != null) {
-                tmp = tmp.next;
+            while (tmp.next != null)
+            {
                 prev = tmp;
-                if (tmp == dealitingNode)
+                tmp = tmp.next;
+                if (tmp.data == value)
                 {
-                    prev = tmp.next;
+                    prev.next = tmp.next;
                 }
             }
         }
-
-        public void deleteLinkedList() {
-            head = null;
-        }
-
-        public void itareteToNodePosition(Nullable<int> position, Node tmp) {
-
+        public void itareteToNodePosition(int? position, Node tmp)
+        {
             for (int i = 0; i < position - 1; i++)
             {
                 tmp = tmp.next;
             }
         }
+        private void printList(Node CurrentNode)
+        {
+            while (CurrentNode != null)
+            {
+                Console.WriteLine(CurrentNode.data + " ");
+                CurrentNode = CurrentNode.next;
+            }
+        }
 
-        public  static void Main(string[] args)
+        public static void Main(string[] args)
         {
             LinkedList firstLinkedList = new LinkedList();
-            
+
             firstLinkedList.head = new LinkedList.Node(1);
             Node second = new Node(2);
             Node third = new Node(3);
- 
+
 
             int insertAtBeggining = 10;
             int insertAtEnd = 20;
             int insertAfterValue = 5;
             int insertAfterNodeNumber = 4;
-            Nullable<int> deleteNode = null;
-            Nullable<int> deleteNodeValue = 5;
+            int? deleteNode = null;
+            int? deleteNodeValue = null;
 
             firstLinkedList.head.next = second;
             second.next = third;
@@ -158,10 +151,11 @@ namespace LinkedList
             firstLinkedList.insertAtFront(insertAtBeggining);
             firstLinkedList.insertAtEnd(insertAtEnd);
             firstLinkedList.insertAfter(insertAfterNodeNumber, insertAfterValue);
-            firstLinkedList.deleteNodePosition(deleteNode);
-            // firstLinkedList.deleteNodeValue(deleteNodeValue);
-            firstLinkedList.printList();
-            // firstLinkedList.display(firstLinkedList.head);
+            firstLinkedList.deleteNodeByPosition(deleteNode);
+            firstLinkedList.deleteNodeByValue(deleteNodeValue);
+            firstLinkedList.printCurrentList();
+            // firstLinkedList.printListBasedOnHead(firstLinkedList.head);
         }
     }
 }
+ 
