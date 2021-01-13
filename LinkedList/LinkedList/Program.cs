@@ -27,17 +27,36 @@ namespace LinkedList
             Node currentNode = head;
             printList(currentNode);
         }
-        public int lengthOfLLIterative() {
+        public int lengthOfLLIterative()
+        {
+            Node tmp = head;
             int length = 0;
-            Node tmp;
-            tmp = head;
             while(tmp != null){
                 length += 1;
                 tmp = tmp.next;
             }
             return length;
         }
+        public int lengthOfLLRecursive(Node tmp, int length = 0)
+        {
+            if (tmp == null) {
+                return length;
+            }
+            else
+            {
+                return lengthOfLLRecursive(tmp.next, length += 1);
+            }
+        }
 
+        public void swapValuesInLinkedList(int x, int y) {
+            Node tmp = head;
+            Node next;            
+            if (x == head.data) {
+                tmp.data = x;
+                next = head.next;
+                tmp = head;
+            }
+        }
         public void insertAtFront(int data)
         {
             if (head == null)
@@ -140,6 +159,7 @@ namespace LinkedList
             }
         }
 
+
         public static void Main(string[] args)
         {
             LinkedList firstLinkedList = new LinkedList();
@@ -155,7 +175,8 @@ namespace LinkedList
             int insertAfterNodeNumber = 4;
             int? deleteNode = null;
             int? deleteNodeValue = null;
-            int LLlength;
+            int LLlengthIterative;
+            int LLlengthRecursive;
 
             firstLinkedList.head.next = second;
             second.next = third;
@@ -167,10 +188,15 @@ namespace LinkedList
             firstLinkedList.deleteNodeByValue(deleteNodeValue);
             firstLinkedList.printCurrentList();
 
-            LLlength = firstLinkedList.lengthOfLLIterative();
-            Console.WriteLine("This Linked List have " + LLlength + ((LLlength > 1) ? " Nodes" : (LLlength == 0) ? " Nodes so it's empty": " Node"));
-            // firstLinkedList.printListBasedOnHead(firstLinkedList.head);
+            // firstLinkedList.deleteLinkedList();
+            LLlengthIterative = firstLinkedList.lengthOfLLIterative();
+            Console.WriteLine("This Linked List have " + LLlengthIterative + ((LLlengthIterative > 1) ? " Nodes" : (LLlengthIterative == 0) ? " Nodes so it's empty" : " Node"));
+            
+            LLlengthRecursive = firstLinkedList.lengthOfLLRecursive(firstLinkedList.head);
+            Console.WriteLine("This Linked List have " + LLlengthRecursive + ((LLlengthRecursive > 1) ? " Nodes" : (LLlengthRecursive == 0) ? " Nodes so it's empty" : " Node"));
+            
         }
+
     }
 }
  
