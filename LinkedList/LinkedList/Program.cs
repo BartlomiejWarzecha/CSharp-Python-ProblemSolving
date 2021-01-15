@@ -31,7 +31,8 @@ namespace LinkedList
         {
             Node tmp = head;
             int length = 0;
-            while(tmp != null){
+            while(tmp != null)
+            {
                 length += 1;
                 tmp = tmp.next;
             }
@@ -39,7 +40,8 @@ namespace LinkedList
         }
         public int lengthOfLLRecursive(Node tmp, int length = 0)
         {
-            if (tmp == null) {
+            if (tmp == null)
+            {
                 return length;
             }
             else
@@ -49,12 +51,66 @@ namespace LinkedList
         }
 
         public void swapValuesInLinkedList(int x, int y) {
+
             Node tmp = head;
-            Node next;            
-            if (x == head.data) {
-                tmp.data = x;
-                next = head.next;
-                tmp = head;
+            int position = 0;
+            int earlySwap = 0;
+            int lateSwap = 0;
+            int lowerValue = x;
+            int highValue = y;
+            if (lowerValue > highValue) {
+                int temporary = lowerValue;
+                lowerValue = highValue;
+                highValue = temporary;
+            }
+            bool isEarlySwap = false;
+            bool isLateSwap = false;
+
+            while (tmp.next != null) {
+                if (lowerValue == tmp.data) 
+                {
+                    isEarlySwap = true;
+                    lowerValue = position; 
+                }
+
+                if (highValue == tmp.data & isEarlySwap) 
+                {
+                    isLateSwap = true;
+                    lateSwap = position;
+                }
+
+                if (isEarlySwap & isLateSwap) 
+                {
+                    Console.WriteLine("Early swap position = {0}, Late swap position = {1}", lowerValue, lateSwap);
+
+                    tmp = head;
+                    while(lowerValue != 0)
+                    {
+                        tmp = tmp.next;
+                        lowerValue--;
+                    }
+                    if (tmp.data == highValue)
+                    {
+                        tmp.data = lowerValue;
+                    }
+                    else { tmp.data = highValue;  }
+                    
+
+                    tmp = head;
+                    while(lateSwap != 0)
+                    {
+                        tmp = tmp.next;
+                        lateSwap--;
+                    }
+                    if (tmp.data == highValue)
+                    {
+                        tmp.data = lowerValue;
+                    }
+                    else { tmp.data = highValue; }
+                }
+
+                tmp = tmp.next;
+                position++;
             }
         }
         public void insertAtFront(int data)
@@ -171,8 +227,8 @@ namespace LinkedList
 
             int insertAtBeggining = 10;
             int insertAtEnd = 20;
-            int insertAfterValue = 5;
-            int insertAfterNodeNumber = 4;
+            int valueForInsertAfter = 5;
+            int nodePositionForInsertAfter = 4;
             int? deleteNode = null;
             int? deleteNodeValue = null;
             int LLlengthIterative;
@@ -183,12 +239,14 @@ namespace LinkedList
 
             firstLinkedList.insertAtFront(insertAtBeggining);
             firstLinkedList.insertAtEnd(insertAtEnd);
-            firstLinkedList.insertAfter(insertAfterNodeNumber, insertAfterValue);
+            firstLinkedList.insertAfter(nodePositionForInsertAfter, valueForInsertAfter);
             firstLinkedList.deleteNodeByPosition(deleteNode);
             firstLinkedList.deleteNodeByValue(deleteNodeValue);
+
+            firstLinkedList.printCurrentList();
+            firstLinkedList.swapValuesInLinkedList(3, 10);
             firstLinkedList.printCurrentList();
 
-            // firstLinkedList.deleteLinkedList();
             LLlengthIterative = firstLinkedList.lengthOfLLIterative();
             Console.WriteLine("This Linked List have " + LLlengthIterative + ((LLlengthIterative > 1) ? " Nodes" : (LLlengthIterative == 0) ? " Nodes so it's empty" : " Node"));
             

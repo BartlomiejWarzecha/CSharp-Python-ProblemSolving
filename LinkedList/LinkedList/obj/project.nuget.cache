@@ -1,11 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "SokzxIliuGHDet17ZqPmHxn/5v/yjXMezkTNwzQhufOB1JTiasXSiTUaDtNvAVZU+PC8Wob1xBr1sjPXm1bdNg==",
+  "dgSpecHash": "UGu1+Ad3//8ZadA49SYNxWaqPJr7qNE2wrI311p9A3F575wC5USuUlXmS/9D5K5KNdFiK/4amf81j2bxZWKAVQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\bartl\\OneDrive\\Desktop\\OneYearOfCode\\C#-SolvingProblems\\LinkedList\\LinkedList\\LinkedList.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\bartl\\.nuget\\packages\\microsoft.netcore.app.ref\\3.1.0\\microsoft.netcore.app.ref.3.1.0.nupkg.sha512",
-    "C:\\Users\\bartl\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\3.1.0\\microsoft.windowsdesktop.app.ref.3.1.0.nupkg.sha512"
-  ],
+  "expectedPackageFiles": [],
   "logs": []
 }
