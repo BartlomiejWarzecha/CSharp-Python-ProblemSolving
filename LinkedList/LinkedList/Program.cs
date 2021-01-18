@@ -50,69 +50,63 @@ namespace LinkedList
             }
         }
 
-        public void swapValuesInLinkedList(int x, int y) {
-
+        public void swapValuesInLinkedList(int x, int y)
+        { 
             Node tmp = head;
             int position = 0;
-            int earlySwap = 0;
-            int lateSwap = 0;
-            int lowerValue = x;
-            int highValue = y;
-            if (lowerValue > highValue) {
-                int temporary = lowerValue;
-                lowerValue = highValue;
-                highValue = temporary;
+            int firstSwapNumber = 0;
+            int secondSwapNumber = 0;
+            int firstValue = x;
+            int secondValue = y;
+
+            if (firstValue > secondValue)
+            {
+                int z = firstValue;
+                firstValue = secondValue;
+                secondValue = z;
             }
-            bool isEarlySwap = false;
-            bool isLateSwap = false;
 
-            while (tmp.next != null) {
-                if (lowerValue == tmp.data) 
+
+            while (tmp.next != null)
+            {
+                if (firstValue == tmp.data)
                 {
-                    isEarlySwap = true;
-                    lowerValue = position; 
+                    firstSwapNumber= position;
                 }
 
-                if (highValue == tmp.data & isEarlySwap) 
+                if (secondValue == tmp.data )
                 {
-                    isLateSwap = true;
-                    lateSwap = position;
+                    secondSwapNumber =  position;
                 }
+                    tmp = tmp.next;
+                    position += 1;
+            }
+            Console.WriteLine("first swap position = {0}, second swap position = {1}", firstValue, secondSwapNumber);
+            Node temporary;
+            temporary = head;
 
-                if (isEarlySwap & isLateSwap) 
-                {
-                    Console.WriteLine("Early swap position = {0}, Late swap position = {1}", lowerValue, lateSwap);
+            while (firstSwapNumber!= 0)
+            {
+                temporary = temporary.next;
+                firstSwapNumber--;
+            }
+            if (temporary.data == firstValue)
+            {
+                temporary.data = secondValue;
+            }
 
-                    tmp = head;
-                    while(lowerValue != 0)
-                    {
-                        tmp = tmp.next;
-                        lowerValue--;
-                    }
-                    if (tmp.data == highValue)
-                    {
-                        tmp.data = lowerValue;
-                    }
-                    else { tmp.data = highValue;  }
-                    
-
-                    tmp = head;
-                    while(lateSwap != 0)
-                    {
-                        tmp = tmp.next;
-                        lateSwap--;
-                    }
-                    if (tmp.data == highValue)
-                    {
-                        tmp.data = lowerValue;
-                    }
-                    else { tmp.data = highValue; }
-                }
-
-                tmp = tmp.next;
-                position++;
+            temporary = head;
+            while (secondSwapNumber != 0)
+            {
+                temporary = temporary.next;
+                secondSwapNumber--;
+            }
+            if (temporary.data == secondValue)
+            {
+                temporary.data = firstValue;
             }
         }
+    
         public void insertAtFront(int data)
         {
             if (head == null)
@@ -244,7 +238,7 @@ namespace LinkedList
             firstLinkedList.deleteNodeByValue(deleteNodeValue);
 
             firstLinkedList.printCurrentList();
-            firstLinkedList.swapValuesInLinkedList(3, 10);
+            firstLinkedList.swapValuesInLinkedList(10, 3);
             firstLinkedList.printCurrentList();
 
             LLlengthIterative = firstLinkedList.lengthOfLLIterative();
