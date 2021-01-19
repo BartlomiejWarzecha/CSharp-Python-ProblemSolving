@@ -54,59 +54,55 @@ namespace LinkedList
         { 
             Node tmp = head;
             int position = 0;
-            int firstSwapNumber = 0;
-            int secondSwapNumber = 0;
-            int firstValue = x;
-            int secondValue = y;
+            int firstSwapNumber;
+            int secondSwapNumber;
 
-            if (firstValue > secondValue)
-            {
-                int z = firstValue;
-                firstValue = secondValue;
-                secondValue = z;
-            }
+            firstSwapNumber = positionOfValueInLinkedList(x);
+            secondSwapNumber = positionOfValueInLinkedList(y);
 
+            Console.WriteLine("first swap position = {0}, second swap position = {1}", firstSwapNumber, secondSwapNumber);
 
+            swapValues(x, y, firstSwapNumber);
+            swapValues(x, y, secondSwapNumber);
+
+        }
+        public int positionOfValueInLinkedList(int value)
+        {
+            Node tmp = head;
+            int position = 0;
             while (tmp.next != null)
             {
-                if (firstValue == tmp.data)
+                if (value == tmp.data)
                 {
-                    firstSwapNumber= position;
+                    return position; 
+
                 }
-
-                if (secondValue == tmp.data )
-                {
-                    secondSwapNumber =  position;
-                }
-                    tmp = tmp.next;
-                    position += 1;
+                tmp = tmp.next;
+                position++;
             }
-            Console.WriteLine("first swap position = {0}, second swap position = {1}", firstValue, secondSwapNumber);
-            Node temporary;
-            temporary = head;
-
-            while (firstSwapNumber!= 0)
+            return -1;
+        }
+        public void swapValues(int x, int y, int position) {
+            Node tmp = head;
+            while(position != 0) 
             {
-                temporary = temporary.next;
-                firstSwapNumber--;
-            }
-            if (temporary.data == firstValue)
-            {
-                temporary.data = secondValue;
+                tmp = tmp.next;
+                position--;
             }
 
-            temporary = head;
-            while (secondSwapNumber != 0)
+            if (tmp.data == x) 
             {
-                temporary = temporary.next;
-                secondSwapNumber--;
+                tmp.data = y;
+                return;
             }
-            if (temporary.data == secondValue)
+
+            if (tmp.data == y) 
             {
-                temporary.data = firstValue;
+                tmp.data = x;
+                return;
             }
         }
-    
+
         public void insertAtFront(int data)
         {
             if (head == null)
@@ -238,7 +234,7 @@ namespace LinkedList
             firstLinkedList.deleteNodeByValue(deleteNodeValue);
 
             firstLinkedList.printCurrentList();
-            firstLinkedList.swapValuesInLinkedList(10, 3);
+            firstLinkedList.swapValuesInLinkedList(5, 1);
             firstLinkedList.printCurrentList();
 
             LLlengthIterative = firstLinkedList.lengthOfLLIterative();
