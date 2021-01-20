@@ -49,11 +49,9 @@ namespace LinkedList
                 return lengthOfLLRecursive(tmp.next, length += 1);
             }
         }
-
         public void swapValuesInLinkedList(int x, int y)
         { 
             Node tmp = head;
-            int position = 0;
             int firstSwapNumber;
             int secondSwapNumber;
 
@@ -62,9 +60,28 @@ namespace LinkedList
 
             Console.WriteLine("first swap position = {0}, second swap position = {1}", firstSwapNumber, secondSwapNumber);
 
+            if (firstSwapNumber == -1 || secondSwapNumber == -1)
+            {
+                if (firstSwapNumber == -1 & secondSwapNumber == -1)
+                {
+                    Console.WriteLine("Both values {0} and {1} are not in Linked List", x, y);
+                    return;
+                }
+
+                if (firstSwapNumber == -1) 
+                { 
+                    Console.WriteLine("One value {0} is not in Linked List", x);
+                    return;
+                }
+                else
+                { 
+                    Console.WriteLine("One value {0} is not in Linked List", y);
+                    return;
+                }
+            }
+           
             swapValues(x, y, firstSwapNumber);
             swapValues(x, y, secondSwapNumber);
-
         }
         public int positionOfValueInLinkedList(int value)
         {
@@ -74,8 +91,7 @@ namespace LinkedList
             {
                 if (value == tmp.data)
                 {
-                    return position; 
-
+                    return position;
                 }
                 tmp = tmp.next;
                 position++;
@@ -84,7 +100,8 @@ namespace LinkedList
         }
         public void swapValues(int x, int y, int position) {
             Node tmp = head;
-            while(position != 0) 
+
+            while (position != 0 & tmp.next != null) 
             {
                 tmp = tmp.next;
                 position--;
@@ -137,7 +154,7 @@ namespace LinkedList
 
             previous = head;
 
-            itareteToNodePosition(position - 1, previous);
+            iterateToNodePosition(position - 1, previous);
 
             tmp = previous;
             After.next = tmp.next;
@@ -164,7 +181,7 @@ namespace LinkedList
 
             Node tmp;
             tmp = head;
-            itareteToNodePosition(position, tmp);
+            iterateToNodePosition(position, tmp);
 
             tmp.next = tmp.next.next;
         }
@@ -189,11 +206,12 @@ namespace LinkedList
                 }
             }
         }
-        public void itareteToNodePosition(int? position, Node tmp)
+        public void iterateToNodePosition(int? position, Node tmp)
         {
-            for (int i = 0; i < position - 1; i++)
+            while (position != 0 & tmp != null) 
             {
                 tmp = tmp.next;
+                position--;
             }
         }
         private void printList(Node CurrentNode)
@@ -203,6 +221,31 @@ namespace LinkedList
                 Console.WriteLine(CurrentNode.data + " ");
                 CurrentNode = CurrentNode.next;
             }
+        }
+
+        private void middleOfLinkedList(Node tmp) 
+        {
+            int length = lengthOfLLRecursive(tmp);
+            int middle;
+            int middlePosition;
+
+            if (length % 2 == 0)
+            {
+                middle = length / 2;
+            }
+            else 
+            {
+                middle = length / 2 + 1;
+            }
+
+            middlePosition = middle + 1;
+
+            while (middle != 0) 
+            {
+                tmp = tmp.next;
+                middle--; 
+            }
+            Console.WriteLine("Middle of this linked list is {0} on position {1}", tmp.data, middlePosition);
         }
 
 
@@ -216,14 +259,14 @@ namespace LinkedList
 
 
             int insertAtBeggining = 10;
-            int insertAtEnd = 20;
-            int valueForInsertAfter = 5;
-            int nodePositionForInsertAfter = 4;
+            int insertAtEnd = 18;
+            int valueForInsertAfter = 18;
+            int nodePositionForInsertAfter = 1;
             int? deleteNode = null;
             int? deleteNodeValue = null;
             int LLlengthIterative;
             int LLlengthRecursive;
-
+            
             firstLinkedList.head.next = second;
             second.next = third;
 
@@ -234,7 +277,7 @@ namespace LinkedList
             firstLinkedList.deleteNodeByValue(deleteNodeValue);
 
             firstLinkedList.printCurrentList();
-            firstLinkedList.swapValuesInLinkedList(5, 1);
+            firstLinkedList.swapValuesInLinkedList(41, 30);
             firstLinkedList.printCurrentList();
 
             LLlengthIterative = firstLinkedList.lengthOfLLIterative();
@@ -242,6 +285,9 @@ namespace LinkedList
             
             LLlengthRecursive = firstLinkedList.lengthOfLLRecursive(firstLinkedList.head);
             Console.WriteLine("This Linked List have " + LLlengthRecursive + ((LLlengthRecursive > 1) ? " Nodes" : (LLlengthRecursive == 0) ? " Nodes so it's empty" : " Node"));
+
+            firstLinkedList.middleOfLinkedList(firstLinkedList.head);
+            
             
         }
 
