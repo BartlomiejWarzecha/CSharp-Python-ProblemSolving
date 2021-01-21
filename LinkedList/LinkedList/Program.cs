@@ -227,26 +227,36 @@ namespace LinkedList
         {
             int length = lengthOfLLRecursive(tmp);
             int middle;
-            int middlePosition;
 
             if (length % 2 == 0)
             {
                 middle = length / 2;
             }
-            else 
+            else
             {
                 middle = length / 2 + 1;
             }
 
-            middlePosition = middle + 1;
-
-            while (middle != 0) 
+            for(int i = 0; i < middle; i++)
             {
                 tmp = tmp.next;
-                middle--; 
             }
-            Console.WriteLine("Middle of this linked list is {0} on position {1}", tmp.data, middlePosition);
+            Console.WriteLine("Middle of this linked list is {0} on position {1}", tmp.data, middle);
         }
+        public void howManyTimesInLinkedList(int value)
+        {
+            Node tmp = head;
+            int count = 0;
+            while (tmp != null) 
+            {
+                if (tmp.data == value) {
+                    count++;
+                }
+                tmp = tmp.next;
+            }
+            Console.WriteLine("Value {0} is in Linked list {1} times", value, count);
+        }
+
 
 
         public static void Main(string[] args)
@@ -287,6 +297,7 @@ namespace LinkedList
             Console.WriteLine("This Linked List have " + LLlengthRecursive + ((LLlengthRecursive > 1) ? " Nodes" : (LLlengthRecursive == 0) ? " Nodes so it's empty" : " Node"));
 
             firstLinkedList.middleOfLinkedList(firstLinkedList.head);
+            firstLinkedList.howManyTimesInLinkedList(22);
             
             
         }
