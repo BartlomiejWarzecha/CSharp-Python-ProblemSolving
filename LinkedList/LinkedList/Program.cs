@@ -231,8 +231,7 @@ namespace LinkedList
             if (length % 2 == 0)
             {
                 middle = length / 2;
-            }
-            else
+            }else
             {
                 middle = length / 2 + 1;
             }
@@ -249,7 +248,8 @@ namespace LinkedList
             int count = 0;
             while (tmp != null) 
             {
-                if (tmp.data == value) {
+                if (tmp.data == value)
+                {
                     count++;
                 }
                 tmp = tmp.next;
@@ -257,6 +257,27 @@ namespace LinkedList
             Console.WriteLine("Value {0} is in Linked list {1} times", value, count);
         }
 
+        public void reverseLinkedList(Node current)
+        {
+            current = head;
+            Node prev = null;
+            Node after = null;
+
+            while (current != null) 
+            {
+                after = current.next;
+                current.next = prev;
+                prev = current;
+                current = after;
+            }
+            head = prev;
+        }
+
+        public void mergeSortedLinkedList(
+        { 
+        
+        
+        }
 
 
         public static void Main(string[] args)
@@ -288,15 +309,17 @@ namespace LinkedList
 
             firstLinkedList.printCurrentList();
             firstLinkedList.swapValuesInLinkedList(41, 30);
-            firstLinkedList.printCurrentList();
 
             LLlengthIterative = firstLinkedList.lengthOfLLIterative();
             Console.WriteLine("This Linked List have " + LLlengthIterative + ((LLlengthIterative > 1) ? " Nodes" : (LLlengthIterative == 0) ? " Nodes so it's empty" : " Node"));
-            
+
+            firstLinkedList.reverseLinkedList(firstLinkedList.head);
+
+            firstLinkedList.printCurrentList(); 
+
             LLlengthRecursive = firstLinkedList.lengthOfLLRecursive(firstLinkedList.head);
             Console.WriteLine("This Linked List have " + LLlengthRecursive + ((LLlengthRecursive > 1) ? " Nodes" : (LLlengthRecursive == 0) ? " Nodes so it's empty" : " Node"));
 
-            firstLinkedList.middleOfLinkedList(firstLinkedList.head);
             firstLinkedList.howManyTimesInLinkedList(22);
             
             
