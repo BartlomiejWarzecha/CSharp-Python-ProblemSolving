@@ -273,9 +273,61 @@ namespace LinkedList
             head = prev;
         }
 
-        public void mergeSortedLinkedList(
-        { 
-        
+        public void mergeSortedLinkedList(Node firstLL, Node secoundLL) 
+        {
+            Node tmp = head;
+
+            if (firstLL.data > secoundLL.data)
+            {
+                tmp = secoundLL;
+                secoundLL = secoundLL.next;
+            }
+            else
+            {
+                tmp = firstLL;
+                firstLL = firstLL.next;
+            }
+
+            tmp = tmp.next;
+
+            while (firstLL != null & secoundLL != null)
+            {
+                if (firstLL.data <= secoundLL.data)
+                {
+                    tmp.next = firstLL;
+                    firstLL = firstLL.next;
+                } 
+                
+                if (secoundLL.data < firstLL.data)
+                {
+                    tmp.next = secoundLL;
+                    secoundLL = secoundLL.next;
+                }
+
+                tmp = tmp.next;
+
+                if (firstLL == null)
+                {
+                    while (secoundLL != null)
+                    {
+                        tmp.next = secoundLL;
+
+                        tmp = tmp.next;
+                        secoundLL = secoundLL.next;
+                    }
+                }
+
+                if (secoundLL == null)
+                {
+                    while (firstLL != null)
+                    {
+                        tmp.next = firstLL;
+
+                        tmp = tmp.next;
+                        firstLL = firstLL.next;
+                    }
+                }
+            }
         
         }
 
@@ -283,11 +335,11 @@ namespace LinkedList
         public static void Main(string[] args)
         {
             LinkedList firstLinkedList = new LinkedList();
+            LinkedList secoundLinkedList = new LinkedList();
 
             firstLinkedList.head = new LinkedList.Node(1);
             Node second = new Node(2);
             Node third = new Node(3);
-
 
             int insertAtBeggining = 10;
             int insertAtEnd = 18;
@@ -321,8 +373,18 @@ namespace LinkedList
             Console.WriteLine("This Linked List have " + LLlengthRecursive + ((LLlengthRecursive > 1) ? " Nodes" : (LLlengthRecursive == 0) ? " Nodes so it's empty" : " Node"));
 
             firstLinkedList.howManyTimesInLinkedList(22);
-            
-            
+
+            Random rnd = new Random();
+
+            secoundLinkedList.head = new LinkedList.Node(1);
+
+            for (int i = 0; i < 5; i++)
+            {
+                firstLinkedList.insertAtFront(rnd.Next(0,10));
+            }
+
+            firstLinkedList.mergeSortedLinkedList(firstLinkedList.head, secoundLinkedList.head);
+            firstLinkedList.printCurrentList(); 
         }
 
     }
