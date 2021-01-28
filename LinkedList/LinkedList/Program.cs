@@ -276,60 +276,69 @@ namespace LinkedList
         public void mergeSortedLinkedList(Node firstLL, Node secoundLL) 
         {
             Node tmp = head;
-
-            if (firstLL.data > secoundLL.data)
+            Node first = firstLL;
+            Node secound = secoundLL;
+            
+            if (first.data > secound.data)
             {
-                tmp = secoundLL;
-                secoundLL = secoundLL.next;
+                tmp = secound;
+                secound = secound.next;
             }
             else
             {
-                tmp = firstLL;
-                firstLL = firstLL.next;
+                tmp = first;
+                first = first.next;
             }
 
             tmp = tmp.next;
 
-            while (firstLL != null & secoundLL != null)
+            while (first.data != null & secound.data != null)
             {
-                if (firstLL.data <= secoundLL.data)
+                if (first.data <= secound.data)
                 {
-                    tmp.next = firstLL;
-                    firstLL = firstLL.next;
+                    tmp.next = first;
+                    first = first.next;
                 } 
                 
-                if (secoundLL.data < firstLL.data)
+                if (secound.data < first.data)
                 {
-                    tmp.next = secoundLL;
-                    secoundLL = secoundLL.next;
+                    tmp.next = secound;
+                    secound = secound.next;
                 }
 
                 tmp = tmp.next;
 
-                if (firstLL == null)
+                if (first.data == null)
                 {
-                    while (secoundLL != null)
+                    while (secound.data != null)
                     {
-                        tmp.next = secoundLL;
+                        tmp.next = secound;
 
                         tmp = tmp.next;
-                        secoundLL = secoundLL.next;
+                        secound = secound.next;
                     }
                 }
 
-                if (secoundLL == null)
+                if (secound.data == null)
                 {
-                    while (firstLL != null)
+                    while (first.data != null)
                     {
-                        tmp.next = firstLL;
+                        tmp.next = first;
 
                         tmp = tmp.next;
-                        firstLL = firstLL.next;
+                        first = first.next;
                     }
                 }
             }
+            return;
+        }
+
+        public void mergeSortLinkedList(Node tmp) 
+        {
+        
         
         }
+
 
 
         public static void Main(string[] args)
@@ -359,7 +368,6 @@ namespace LinkedList
             firstLinkedList.deleteNodeByPosition(deleteNode);
             firstLinkedList.deleteNodeByValue(deleteNodeValue);
 
-            firstLinkedList.printCurrentList();
             firstLinkedList.swapValuesInLinkedList(41, 30);
 
             LLlengthIterative = firstLinkedList.lengthOfLLIterative();
@@ -367,7 +375,6 @@ namespace LinkedList
 
             firstLinkedList.reverseLinkedList(firstLinkedList.head);
 
-            firstLinkedList.printCurrentList(); 
 
             LLlengthRecursive = firstLinkedList.lengthOfLLRecursive(firstLinkedList.head);
             Console.WriteLine("This Linked List have " + LLlengthRecursive + ((LLlengthRecursive > 1) ? " Nodes" : (LLlengthRecursive == 0) ? " Nodes so it's empty" : " Node"));
@@ -380,11 +387,11 @@ namespace LinkedList
 
             for (int i = 0; i < 5; i++)
             {
-                firstLinkedList.insertAtFront(rnd.Next(0,10));
+                secoundLinkedList.insertAtFront(rnd.Next(0,10));
             }
 
             firstLinkedList.mergeSortedLinkedList(firstLinkedList.head, secoundLinkedList.head);
-            firstLinkedList.printCurrentList(); 
+            firstLinkedList.printListBasedOnHead(firstLinkedList.head);
         }
 
     }
