@@ -4,8 +4,8 @@ namespace LinkedList
 {
     public class LinkedList
     {
+        private Node head;
 
-        Node head;
         public class Node
         {
             public int? data;
@@ -17,27 +17,40 @@ namespace LinkedList
                 next = null;
             }
         }
+
         public void printCurrentList()
         {
             Node printedNode = head;
             printList(printedNode);
         }
+
         public void printListBasedOnHead(Node head)
         {
             Node currentNode = head;
             printList(currentNode);
         }
+
+        private void printList(Node CurrentNode)
+        {
+            while (CurrentNode != null)
+            {
+                Console.WriteLine(CurrentNode.data + " ");
+                CurrentNode = CurrentNode.next;
+            }
+        }
+
         public int lengthOfLLIterative()
         {
             Node tmp = head;
             int length = 0;
-            while(tmp != null)
+            while (tmp != null)
             {
                 length += 1;
                 tmp = tmp.next;
             }
             return length;
         }
+
         public int lengthOfLLRecursive(Node tmp, int length = 0)
         {
             if (tmp == null)
@@ -49,8 +62,9 @@ namespace LinkedList
                 return lengthOfLLRecursive(tmp.next, length += 1);
             }
         }
+
         public void swapValuesInLinkedList(int x, int y)
-        { 
+        {
             Node tmp = head;
             int firstSwapNumber;
             int secondSwapNumber;
@@ -68,21 +82,22 @@ namespace LinkedList
                     return;
                 }
 
-                if (firstSwapNumber == -1) 
-                { 
+                if (firstSwapNumber == -1)
+                {
                     Console.WriteLine("One value {0} is not in Linked List", x);
                     return;
                 }
                 else
-                { 
+                {
                     Console.WriteLine("One value {0} is not in Linked List", y);
                     return;
                 }
             }
-           
+
             swapValues(x, y, firstSwapNumber);
             swapValues(x, y, secondSwapNumber);
         }
+
         public int positionOfValueInLinkedList(int value)
         {
             Node tmp = head;
@@ -98,22 +113,24 @@ namespace LinkedList
             }
             return -1;
         }
-        public void swapValues(int x, int y, int position) {
+
+        public void swapValues(int x, int y, int position)
+        {
             Node tmp = head;
 
-            while (position != 0 & tmp.next != null) 
+            while (position != 0 & tmp.next != null)
             {
                 tmp = tmp.next;
                 position--;
             }
 
-            if (tmp.data == x) 
+            if (tmp.data == x)
             {
                 tmp.data = y;
                 return;
             }
 
-            if (tmp.data == y) 
+            if (tmp.data == y)
             {
                 tmp.data = x;
                 return;
@@ -132,6 +149,7 @@ namespace LinkedList
             head = newHead;
             head.next = tmp;
         }
+
         public void insertAtEnd(int data)
         {
             Node newTail = new Node(data);
@@ -146,6 +164,7 @@ namespace LinkedList
             tmp.next = newTail;
             newTail.next = null;
         }
+
         public void insertAfter(int position, int data)
         {
             Node After = new Node(data);
@@ -206,24 +225,17 @@ namespace LinkedList
                 }
             }
         }
+
         public void iterateToNodePosition(int? position, Node tmp)
         {
-            while (position != 0 & tmp != null) 
+            while (position != 0 & tmp != null)
             {
                 tmp = tmp.next;
                 position--;
             }
         }
-        private void printList(Node CurrentNode)
-        {
-            while (CurrentNode != null)
-            {
-                Console.WriteLine(CurrentNode.data + " ");
-                CurrentNode = CurrentNode.next;
-            }
-        }
 
-        private void middleOfLinkedList(Node tmp) 
+        private void middleOfLinkedList(Node tmp)
         {
             int length = lengthOfLLRecursive(tmp);
             int middle;
@@ -231,22 +243,24 @@ namespace LinkedList
             if (length % 2 == 0)
             {
                 middle = length / 2;
-            }else
+            }
+            else
             {
                 middle = length / 2 + 1;
             }
 
-            for(int i = 0; i < middle; i++)
+            for (int i = 0; i < middle; i++)
             {
                 tmp = tmp.next;
             }
             Console.WriteLine("Middle of this linked list is {0} on position {1}", tmp.data, middle);
         }
+
         public void howManyTimesInLinkedList(int value)
         {
             Node tmp = head;
             int count = 0;
-            while (tmp != null) 
+            while (tmp != null)
             {
                 if (tmp.data == value)
                 {
@@ -263,7 +277,7 @@ namespace LinkedList
             Node prev = null;
             Node after = null;
 
-            while (current != null) 
+            while (current != null)
             {
                 after = current.next;
                 current.next = prev;
@@ -273,12 +287,12 @@ namespace LinkedList
             head = prev;
         }
 
-        public void mergeSortedLinkedList(Node firstLL, Node secoundLL) 
+        public void mergeSortedLinkedList(Node firstLL, Node secoundLL)
         {
             Node tmp = head;
             Node first = firstLL;
             Node secound = secoundLL;
-            
+
             if (first.data > secound.data)
             {
                 tmp = secound;
@@ -298,8 +312,8 @@ namespace LinkedList
                 {
                     tmp.next = first;
                     first = first.next;
-                } 
-                
+                }
+
                 if (secound.data < first.data)
                 {
                     tmp.next = secound;
@@ -333,13 +347,9 @@ namespace LinkedList
             return;
         }
 
-        public void mergeSortLinkedList(Node tmp) 
+        public void mergeSortLinkedList(Node tmp)
         {
-        
-        
         }
-
-
 
         public static void Main(string[] args)
         {
@@ -358,7 +368,7 @@ namespace LinkedList
             int? deleteNodeValue = null;
             int LLlengthIterative;
             int LLlengthRecursive;
-            
+
             firstLinkedList.head.next = second;
             second.next = third;
 
@@ -375,7 +385,6 @@ namespace LinkedList
 
             firstLinkedList.reverseLinkedList(firstLinkedList.head);
 
-
             LLlengthRecursive = firstLinkedList.lengthOfLLRecursive(firstLinkedList.head);
             Console.WriteLine("This Linked List have " + LLlengthRecursive + ((LLlengthRecursive > 1) ? " Nodes" : (LLlengthRecursive == 0) ? " Nodes so it's empty" : " Node"));
 
@@ -387,13 +396,11 @@ namespace LinkedList
 
             for (int i = 0; i < 5; i++)
             {
-                secoundLinkedList.insertAtFront(rnd.Next(0,10));
+                secoundLinkedList.insertAtFront(rnd.Next(0, 10));
             }
 
             firstLinkedList.mergeSortedLinkedList(firstLinkedList.head, secoundLinkedList.head);
             firstLinkedList.printListBasedOnHead(firstLinkedList.head);
         }
-
     }
 }
- 
