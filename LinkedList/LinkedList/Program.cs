@@ -21,7 +21,7 @@ namespace LinkedList
         // test
         public void printCurrentList()
         {
-            Node printedNode = head
+            Node printedNode = head;
             printList(printedNode);
         }
 

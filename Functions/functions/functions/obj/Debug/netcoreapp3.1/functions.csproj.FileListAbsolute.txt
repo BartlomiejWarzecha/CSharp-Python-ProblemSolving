@@ -1,0 +1,13 @@
+C:\Users\bartl\OneDrive\Desktop\OneYearOfCode\C#-SolvingProblems\Functions\functions\functions\bin\Debug\netcoreapp3.1\functions.exe
+C:\Users\bartl\OneDrive\Desktop\OneYearOfCode\C#-SolvingProblems\Functions\functions\functions\bin\Debug\netcoreapp3.1\functions.deps.json
+C:\Users\bartl\OneDrive\Desktop\OneYearOfCode\C#-SolvingProblems\Functions\functions\functions\bin\Debug\netcoreapp3.1\functions.runtimeconfig.json
+C:\Users\bartl\OneDrive\Desktop\OneYearOfCode\C#-SolvingProblems\Functions\functions\functions\bin\Debug\netcoreapp3.1\functions.runtimeconfig.dev.json
+C:\Users\bartl\OneDrive\Desktop\OneYearOfCode\C#-SolvingProblems\Functions\functions\functions\bin\Debug\netcoreapp3.1\functions.dll
+C:\Users\bartl\OneDrive\Desktop\OneYearOfCode\C#-SolvingProblems\Functions\functions\functions\bin\Debug\netcoreapp3.1\functions.pdb
+C:\Users\bartl\OneDrive\Desktop\OneYearOfCode\C#-SolvingProblems\Functions\functions\functions\obj\Debug\netcoreapp3.1\functions.AssemblyInfoInputs.cache
+C:\Users\bartl\OneDrive\Desktop\OneYearOfCode\C#-SolvingProblems\Functions\functions\functions\obj\Debug\netcoreapp3.1\functions.AssemblyInfo.cs
+C:\Users\bartl\OneDrive\Desktop\OneYearOfCode\C#-SolvingProblems\Functions\functions\functions\obj\Debug\netcoreapp3.1\functions.csproj.CoreCompileInputs.cache
+C:\Users\bartl\OneDrive\Desktop\OneYearOfCode\C#-SolvingProblems\Functions\functions\functions\obj\Debug\netcoreapp3.1\functions.dll
+C:\Users\bartl\OneDrive\Desktop\OneYearOfCode\C#-SolvingProblems\Functions\functions\functions\obj\Debug\netcoreapp3.1\functions.pdb
+C:\Users\bartl\OneDrive\Desktop\OneYearOfCode\C#-SolvingProblems\Functions\functions\functions\obj\Debug\netcoreapp3.1\functions.genruntimeconfig.cache
+C:\Users\bartl\OneDrive\Desktop\OneYearOfCode\C#-SolvingProblems\Functions\functions\functions\obj\Debug\netcoreapp3.1\functions.csprojAssemblyReference.cache
