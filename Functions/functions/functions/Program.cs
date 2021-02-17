@@ -84,20 +84,14 @@ namespace someFunctions
         }
 
         public static int isVowel(char character)
-        { 
-                switch (character)
+        {
+                switch (Char.ToLower(character))
                 {
-                    case 'A':
                     case 'a':
-                    case 'O':
                     case 'o':
-                    case 'E':
                     case 'e':
-                    case 'I':
                     case 'i':
-                    case 'U':
                     case 'u':
-                    case 'Y':
                     case 'y':
                         return 1;
                 default: 
