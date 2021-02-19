@@ -24,7 +24,6 @@ namespace LinkedList
             Node printedNode = head;
             printList(printedNode);
         }
-
         public void printListBasedOnHead(Node head)
         {
             Node currentNode = head;

@@ -111,7 +111,7 @@ namespace someFunctions
             }
         }
 
-        public static void merge(int[n] tablica, int left = 0 , int right) {
+        /*        public static void merge(int[n] tablica, int left = 0 , int right) {
 
             merge(tablica, left, right / 2);
             merge(tablica, , right / 2);
@@ -123,28 +123,54 @@ namespace someFunctions
         }
         public static void divide(int left, int right) { 
             
-            
-            
         }
-            
-        
+*/
+        public static int howManyTimesInText(string phrase, string text) 
+        {
+            int count = 0;
+            int lenPhrase = phrase.Length;
+            int lenText = text.Length;
+
+            for (int i = 0; i < lenText; i++) 
+            { 
+
+                    if (text[i] == phrase[0]) 
+                    {
+
+                    if (lenPhrase == 1) 
+                    { 
+                        count += 1;
+                        continue;
+                    }
+                        for (int l = 1; l < lenPhrase;l++)
+                        {
+                            if (text[i + l] == phrase[l])
+                            {
+                                if (l + 1 == lenPhrase)
+                                {
+                                    count += 1;
+                                    break;
+                                }
+                            } else
+                            {
+                                break;
+                            }
+
+                        } 
+                    }
+            }
+            return count;
+        }
+
+
         static void Main(string[] args)
         {
-            Random random = new Random();
+            string randomPhrase = "l";
+            string randomText = "hello world hello c#";
 
-            int n = 10;
+            int countPhraseReapeating = howManyTimesInText(randomPhrase, randomText);
 
-            int[] tablica = new int[n];
-
-            for(int i = 0; i < n; i++) { 
-                tablica[i] = random.Next(10);
-            }
-
-            foreach (int element in tablica) {
-                Console.WriteLine($"{element}");
-            }
-
-
+            Console.WriteLine($"String \"  {randomPhrase} \" is in text \" {randomText} \": {countPhraseReapeating} times ");
         }
 
     }
