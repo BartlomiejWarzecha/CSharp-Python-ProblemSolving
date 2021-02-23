@@ -213,14 +213,9 @@ namespace someFunctions
         }
 
         static void Main(string[] args)
-        {
-            string isPalindrome = "aa";
-            isPalindrom(isPalindrome);
-
+        { 
+        
+        
+        
         }
-
-    }
-
-}
-
 
