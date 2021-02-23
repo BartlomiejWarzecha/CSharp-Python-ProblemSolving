@@ -1,11 +1,12 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Text;
 
-namespace CircularLinkedList
+namespace LinkedList
 {
-    class Program
+    class CircullarLinkedList
     {
-
-        public class CircularLinkedList 
+        public class CircularLinkedList
         {
 
             private Node head;
