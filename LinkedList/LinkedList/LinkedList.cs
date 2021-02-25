@@ -4,7 +4,7 @@ namespace LinkedList
 {
     public class LinkedList
     {
-        private Node head;
+        protected Node head;
 
         public class Node
         {
@@ -24,6 +24,7 @@ namespace LinkedList
             Node printedNode = head;
             printList(printedNode);
         }
+
         public void printListBasedOnHead(Node head)
         {
             Node currentNode = head;
@@ -148,7 +149,16 @@ namespace LinkedList
             Node tmp = head;
             head = newHead;
             head.next = tmp;
+        }   
+        public void insertNodeAtFront(Node after)
+        { 
+            Node tmp = head;
+            while (tmp.next != null) {
+                tmp = tmp.next;
+            }
+            tmp.next = after;
         }
+
 
         public void insertAtEnd(int data)
         {
@@ -348,59 +358,66 @@ namespace LinkedList
         }
 
         public void mergeSortLinkedList(Node tmp)
+
         {
         }
+        public void splitCircularLinkedList()
+        {
+            LinkedList firstCircularLinkedList = new LinkedList();
+            LinkedList secondCircularLinekedlList = new LinkedList();
 
+            Node tmp = head;
+            int length = 0;
+            while (tmp != null)
+            {
+                length += 1;
+                tmp = tmp.next;
+            }
+            tmp = head;
+
+            if (length % 2 == 0)
+            {
+
+                firstCircularLinkedList.head = tmp;
+
+                for (int i = 1; i < length / 2; i++)
+                {
+                    firstCircularLinkedList.insertNodeAtFront(tmp.next);
+                    tmp = tmp.next;
+                }
+                firstCircularLinkedList.insertNodeAtFront(firstCircularLinkedList.head);
+
+                secondCircularLinekedlList.head = tmp;
+                for (int i = 1; i < length / 2; i++)
+                {
+                    secondCircularLinekedlList.insertNodeAtFront(tmp.next);
+                    tmp = tmp.next;
+                }
+                secondCircularLinekedlList.insertNodeAtFront(secondCircularLinekedlList.head);
+
+                firstCircularLinkedList.printCurrentList();
+                secondCircularLinekedlList.printCurrentList();
+            }
+
+        }
         public static void Main(string[] args)
         {
             LinkedList firstLinkedList = new LinkedList();
-            LinkedList secoundLinkedList = new LinkedList();
+            CircularLinkedList firstCircularLinkedList = new CircularLinkedList();
 
             firstLinkedList.head = new LinkedList.Node(1);
+
+            firstCircularLinkedList.head = new CircularLinkedList.Node(1);
             Node second = new Node(2);
             Node third = new Node(3);
+            Node fourth = new Node(4);
 
-            int insertAtBeggining = 10;
-            int insertAtEnd = 18;
-            int valueForInsertAfter = 18;
-            int nodePositionForInsertAfter = 1;
-            int? deleteNode = null;
-            int? deleteNodeValue = null;
-            int LLlengthIterative;
-            int LLlengthRecursive;
-
-            firstLinkedList.head.next = second;
+            firstCircularLinkedList.head.next = second;
             second.next = third;
-
-            firstLinkedList.insertAtFront(insertAtBeggining);
-            firstLinkedList.insertAtEnd(insertAtEnd);
-            firstLinkedList.insertAfter(nodePositionForInsertAfter, valueForInsertAfter);
-            firstLinkedList.deleteNodeByPosition(deleteNode);
-            firstLinkedList.deleteNodeByValue(deleteNodeValue);
-
-            firstLinkedList.swapValuesInLinkedList(41, 30);
-
-            LLlengthIterative = firstLinkedList.lengthOfLLIterative();
-            Console.WriteLine("This Linked List have " + LLlengthIterative + ((LLlengthIterative > 1) ? " Nodes" : (LLlengthIterative == 0) ? " Nodes so it's empty" : " Node"));
-
-            firstLinkedList.reverseLinkedList(firstLinkedList.head);
-
-            LLlengthRecursive = firstLinkedList.lengthOfLLRecursive(firstLinkedList.head);
-            Console.WriteLine("This Linked List have " + LLlengthRecursive + ((LLlengthRecursive > 1) ? " Nodes" : (LLlengthRecursive == 0) ? " Nodes so it's empty" : " Node"));
-
-            firstLinkedList.howManyTimesInLinkedList(22);
-
-            Random rnd = new Random();
-
-            secoundLinkedList.head = new LinkedList.Node(1);
-
-            for (int i = 0; i < 5; i++)
-            {
-                secoundLinkedList.insertAtFront(rnd.Next(0, 10));
-            }
-
-            firstLinkedList.mergeSortedLinkedList(firstLinkedList.head, secoundLinkedList.head);
-            firstLinkedList.printListBasedOnHead(firstLinkedList.head);
+            third.next = fourth;
+            fourth.next = firstCircularLinkedList.head;
+             
+            firstCircularLinkedList.splitCircularLinkedList();
         }
     }
 }
