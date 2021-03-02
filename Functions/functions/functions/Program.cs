@@ -212,10 +212,64 @@ namespace someFunctions
             }
         }
 
-        static void Main(string[] args)
-        { 
-        
-        
-        
+        public static void getMinMax()
+        {
+            int minValue = 0;
+            int maxValue = 0;
+            bool success = false;
+
+            while (minValue >= maxValue) {
+
+                while (success != true)
+                {
+                    Console.WriteLine("Enter minimum value: ");
+                    success = Int32.TryParse(Console.ReadLine(), out minValue);
+
+                    if (!success)
+                    {
+                        Console.WriteLine("Something went wrong please try again");
+                        continue;
+                    }
+
+                    success = true;
+                }
+
+                success = false;
+
+                while (success != true)
+                {
+                    Console.WriteLine("Enter maximum value: ");
+                    success = Int32.TryParse(Console.ReadLine(), out maxValue);
+
+                    if (!success)
+                    {
+                        Console.WriteLine("Something went wrong please try again");
+                        continue;
+                    }
+                    if (minValue >= maxValue)
+                    {
+                        Console.WriteLine($"Max value must be larger than min value: > {minValue}");
+                        Console.WriteLine($"Please try again");
+                        continue;
+                    }
+
+                    success = true;
+                }
+    
+            }
+
+            Console.WriteLine($"Minimum number  = {minValue} Maximum number  = {maxValue}");
+
         }
+
+        static void Main(string[] args)
+        {
+            getMinMax();
+
+
+
+
+        }     
+    }
+}
 
