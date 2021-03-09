@@ -18,7 +18,6 @@ namespace LinkedList
             }
         }
 
-        // test
         public void printCurrentList()
         {
             Node printedNode = head;
@@ -159,7 +158,6 @@ namespace LinkedList
             tmp.next = after;
         }
 
-
         public void insertAtEnd(int data)
         {
             Node newTail = new Node(data);
@@ -297,8 +295,48 @@ namespace LinkedList
             head = prev;
         }
 
-        public void mergeSortedLinkedList(Node firstLL, Node secoundLL)
+        public Node mergeTwoSortedLinkedLists (Node first, Node second)
+        { 
+
+            Node mergedList = first;
+
+            if (first.data > second.data) 
+            {
+                var temp = first;
+                first = second;
+                second = temp;
+            }
+
+            while (first.next != null && second != null) 
+            {
+
+                if (first.next.data <= second.data)
+                {
+                    first = first.next;
+                }
+                else
+                {
+                    var temp = first.next;
+                    var n = second.next;
+                    first.next = second;
+                    second = temp;
+                    first.next = n;
+                }
+            }
+
+            while (second != null) 
+            {
+                first.next = second;
+                second = second.next; 
+            }
+
+            return first;
+        } 
+        // Not working good 
+        // 4 6 instead of First Linked List 1 2 3 4   Second Linked List 3 4 5 6
+        public Node mergeSortedLinkedList(Node firstLL, Node secoundLL)
         {
+            Node dummy = new Node(0);
             Node tmp = head;
             Node first = firstLL;
             Node secound = secoundLL;
@@ -314,7 +352,6 @@ namespace LinkedList
                 first = first.next;
             }
 
-            tmp = tmp.next;
 
             while (first.data != null & secound.data != null)
             {
@@ -322,24 +359,25 @@ namespace LinkedList
                 {
                     tmp.next = first;
                     first = first.next;
+                    tmp = tmp.next;
+                
                 }
 
                 if (secound.data < first.data)
                 {
                     tmp.next = secound;
                     secound = secound.next;
+                    tmp = tmp.next;
                 }
 
-                tmp = tmp.next;
 
                 if (first.data == null)
                 {
                     while (secound.data != null)
                     {
                         tmp.next = secound;
-
-                        tmp = tmp.next;
                         secound = secound.next;
+                        tmp = tmp.next;
                     }
                 }
 
@@ -348,20 +386,15 @@ namespace LinkedList
                     while (first.data != null)
                     {
                         tmp.next = first;
-
-                        tmp = tmp.next;
                         first = first.next;
+                        tmp = tmp.next;
                     }
                 }
             }
-            return;
+            return tmp;
         }
 
-        public void mergeSortLinkedList(Node tmp)
-
-        {
-        }
-        public void splitCircularLinkedList()
+        public static void splitCircularLinkedList(Node head)
         {
             LinkedList firstCircularLinkedList = new LinkedList();
             LinkedList secondCircularLinekedlList = new LinkedList();
@@ -403,21 +436,30 @@ namespace LinkedList
         public static void Main(string[] args)
         {
             LinkedList firstLinkedList = new LinkedList();
-            CircularLinkedList firstCircularLinkedList = new CircularLinkedList();
+            LinkedList secondLinkedList = new LinkedList();
+            LinkedList thirdLinkedList = new LinkedList();
 
             firstLinkedList.head = new LinkedList.Node(1);
-
-            firstCircularLinkedList.head = new CircularLinkedList.Node(1);
             Node second = new Node(2);
             Node third = new Node(3);
             Node fourth = new Node(4);
 
-            firstCircularLinkedList.head.next = second;
+            firstLinkedList.head.next = second;
             second.next = third;
             third.next = fourth;
-            fourth.next = firstCircularLinkedList.head;
-             
-            firstCircularLinkedList.splitCircularLinkedList();
+
+            secondLinkedList.head = new LinkedList.Node(3);
+            Node secondSecondLL = new Node(4);
+            Node thirdSecondLL = new Node(5);
+            Node fourthSecondLL = new Node(6);
+
+            secondLinkedList.head.next = secondSecondLL;
+            secondSecondLL.next = thirdSecondLL;
+            thirdSecondLL.next = fourthSecondLL;
+
+            thirdLinkedList.head = firstLinkedList.mergeTwoSortedLinkedLists(firstLinkedList.head, secondLinkedList.head);
+
+            thirdLinkedList.printCurrentList();
         }
     }
 }
