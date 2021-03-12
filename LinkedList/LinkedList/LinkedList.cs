@@ -2,7 +2,7 @@
 
 namespace LinkedList
 {
-    public class LinkedList 
+    public class LinkedList : DoubleLinkedList
     {
         protected Node head;
 
@@ -183,7 +183,7 @@ namespace LinkedList
 
             previous = head;
 
-            iterateToNodePosition(position - 1, previous);
+            iterateToNodePosition(position - 1, ref previous);
 
             tmp = previous;
             After.next = tmp.next;
@@ -210,7 +210,7 @@ namespace LinkedList
 
             Node tmp;
             tmp = head;
-            iterateToNodePosition(position, tmp);
+            iterateToNodePosition(position, ref tmp);
 
             tmp.next = tmp.next.next;
         }
@@ -236,7 +236,7 @@ namespace LinkedList
             }
         }
 
-        public void iterateToNodePosition(int? position, Node tmp)
+        public static void iterateToNodePosition(int? position, ref Node tmp)
         {
             while (position != 0 & tmp != null)
             {
@@ -434,6 +434,21 @@ namespace LinkedList
             }
 
         }
+            public void addValueAfterNodePositionInDoubleLinkedList(int position, int data)
+            {
+                Node tmp = head;
+                Node newNode = new Node(data);
+
+               
+                iterateToNodePosition(position - 1, ref tmp);
+
+                Node next = tmp.next;
+                Node prev = tmp;
+                prev.next = newNode;
+                newNode.next = next;
+                newNode.prev = prev;
+            }
+
         public static void Main(string[] args)
         {
             LinkedList doubleLinkedList = new LinkedList();
@@ -451,6 +466,9 @@ namespace LinkedList
             second.prev = doubleLinkedList.head;
             third.prev = second;
 
+            doubleLinkedList.addValueAfterNodePositionInDoubleLinkedList(4, 10);
+            doubleLinkedList.printCurrentList();
+
             secondLinkedList.head = new LinkedList.Node(3);
             Node secondSecondLL = new Node(4);
             Node thirdSecondLL = new Node(5);
@@ -460,8 +478,7 @@ namespace LinkedList
             secondSecondLL.next = thirdSecondLL;
             thirdSecondLL.next = fourthSecondLL;
 
-
-            secondLinkedList = mergeSortedLinkedList(secondLinkedList.head, doubleLinkedList.head);
+            
 
         }
     }
