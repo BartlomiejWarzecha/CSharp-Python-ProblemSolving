@@ -2,7 +2,7 @@
 
 namespace LinkedList
 {
-    public class LinkedList
+    public class LinkedList 
     {
         protected Node head;
 
@@ -10,11 +10,13 @@ namespace LinkedList
         {
             public int? data;
             public Node next;
+            public Node prev;
 
             public Node(int? d)
             {
                 data = d;
                 next = null;
+                prev = null;
             }
         }
 
@@ -334,10 +336,9 @@ namespace LinkedList
         } 
         // Not working good 
         // 4 6 instead of First Linked List 1 2 3 4   Second Linked List 3 4 5 6
-        public Node mergeSortedLinkedList(Node firstLL, Node secoundLL)
+        public static Node mergeSortedLinkedList(Node firstLL, Node secoundLL)
         {
-            Node dummy = new Node(0);
-            Node tmp = head;
+            Node tmp = firstLL;
             Node first = firstLL;
             Node secound = secoundLL;
 
@@ -435,18 +436,20 @@ namespace LinkedList
         }
         public static void Main(string[] args)
         {
-            LinkedList firstLinkedList = new LinkedList();
+            LinkedList doubleLinkedList = new LinkedList();
             LinkedList secondLinkedList = new LinkedList();
-            LinkedList thirdLinkedList = new LinkedList();
 
-            firstLinkedList.head = new LinkedList.Node(1);
+            doubleLinkedList.head = new LinkedList.Node(1);
             Node second = new Node(2);
             Node third = new Node(3);
             Node fourth = new Node(4);
 
-            firstLinkedList.head.next = second;
+            doubleLinkedList.head.next = second;
             second.next = third;
             third.next = fourth;
+
+            second.prev = doubleLinkedList.head;
+            third.prev = second;
 
             secondLinkedList.head = new LinkedList.Node(3);
             Node secondSecondLL = new Node(4);
@@ -457,9 +460,9 @@ namespace LinkedList
             secondSecondLL.next = thirdSecondLL;
             thirdSecondLL.next = fourthSecondLL;
 
-            thirdLinkedList.head = firstLinkedList.mergeTwoSortedLinkedLists(firstLinkedList.head, secondLinkedList.head);
 
-            thirdLinkedList.printCurrentList();
+            secondLinkedList = mergeSortedLinkedList(secondLinkedList.head, doubleLinkedList.head);
+
         }
     }
 }
