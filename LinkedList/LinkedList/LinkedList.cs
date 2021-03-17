@@ -434,7 +434,7 @@ namespace LinkedList
             }
 
         }
-            public void addValueAfterNodePositionInDoubleLinkedList(int position, int data)
+        public void addValueAfterNodePositionInDoubleLinkedList(int position, int data)
             {
                 Node tmp = head;
                 Node newNode = new Node(data);
@@ -448,6 +448,23 @@ namespace LinkedList
                 newNode.next = next;
                 newNode.prev = prev;
             }
+
+        public  void reverseDoubleLinkedList(Node current) 
+        {
+            Node prev = null;
+            Node after = null;
+            current = head;
+
+            while (current != null) 
+            {
+                after = current.next;
+                current.next = current.prev;
+                prev = current;
+                current.prev = after;
+                current = after;
+            }
+            head = prev;
+        }
 
         public static void Main(string[] args)
         {
@@ -468,6 +485,9 @@ namespace LinkedList
 
             doubleLinkedList.addValueAfterNodePositionInDoubleLinkedList(4, 10);
             doubleLinkedList.printCurrentList();
+            doubleLinkedList.reverseDoubleLinkedList(doubleLinkedList.head);
+            doubleLinkedList.printCurrentList();
+           
 
             secondLinkedList.head = new LinkedList.Node(3);
             Node secondSecondLL = new Node(4);
@@ -477,6 +497,8 @@ namespace LinkedList
             secondLinkedList.head.next = secondSecondLL;
             secondSecondLL.next = thirdSecondLL;
             thirdSecondLL.next = fourthSecondLL;
+
+
 
             
 

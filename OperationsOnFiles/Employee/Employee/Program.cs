@@ -14,7 +14,6 @@ namespace Employee
             employee1.LastName = "Warzecha";
 
             employee1.SetSalary();
-
             employee1.Save();
 
             employee1.SetFullName("ktos", "inny");

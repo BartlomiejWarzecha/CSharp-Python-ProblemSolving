@@ -262,12 +262,40 @@ namespace someFunctions
 
         }
 
-        static void Main(string[] args)
+        public static void printReverseText(string text) 
         {
-            getMinMax();
+            int textLength = text.Length;
+            string reverseText = "";
+            
+            while (textLength != 0) 
+            {
+                reverseText += text[textLength - 1];
+                textLength--;
+            }
+            Console.WriteLine($"Reversed text  = {reverseText}");
+        }
+
+        public static string reverseText(string text) 
+        {
+            if (text.Length <= 1)
+            {
+                return text;
+            }
+
+            char firstLetter = text[0];
+            string rest = text.Substring(1);
 
 
+            return reverseText(rest) + firstLetter;
 
+        }
+        public static void Main(string[] args)
+        {
+
+            string name = "bartek";
+            name = reverseText(name);
+
+            Console.WriteLine(name);
 
         }     
     }
