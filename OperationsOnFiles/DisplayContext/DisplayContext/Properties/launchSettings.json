@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "DisplayContext": {
+      "commandName": "Project",
+      "commandLineArgs": "testFile.txt"
+    }
+  }
+}
