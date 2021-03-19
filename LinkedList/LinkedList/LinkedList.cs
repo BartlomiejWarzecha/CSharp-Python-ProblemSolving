@@ -150,9 +150,9 @@ namespace LinkedList
             Node tmp = head;
             head = newHead;
             head.next = tmp;
-        }   
+        }
         public void insertNodeAtFront(Node after)
-        { 
+        {
             Node tmp = head;
             while (tmp.next != null) {
                 tmp = tmp.next;
@@ -297,19 +297,19 @@ namespace LinkedList
             head = prev;
         }
 
-        public Node mergeTwoSortedLinkedLists (Node first, Node second)
-        { 
+        public Node mergeTwoSortedLinkedLists(Node first, Node second)
+        {
 
             Node mergedList = first;
 
-            if (first.data > second.data) 
+            if (first.data > second.data)
             {
                 var temp = first;
                 first = second;
                 second = temp;
             }
 
-            while (first.next != null && second != null) 
+            while (first.next != null && second != null)
             {
 
                 if (first.next.data <= second.data)
@@ -326,14 +326,14 @@ namespace LinkedList
                 }
             }
 
-            while (second != null) 
+            while (second != null)
             {
                 first.next = second;
-                second = second.next; 
+                second = second.next;
             }
 
             return first;
-        } 
+        }
         // Not working good 
         // 4 6 instead of First Linked List 1 2 3 4   Second Linked List 3 4 5 6
         public static Node mergeSortedLinkedList(Node firstLL, Node secoundLL)
@@ -361,7 +361,7 @@ namespace LinkedList
                     tmp.next = first;
                     first = first.next;
                     tmp = tmp.next;
-                
+
                 }
 
                 if (secound.data < first.data)
@@ -435,27 +435,27 @@ namespace LinkedList
 
         }
         public void addValueAfterNodePositionInDoubleLinkedList(int position, int data)
-            {
-                Node tmp = head;
-                Node newNode = new Node(data);
+        {
+            Node tmp = head;
+            Node newNode = new Node(data);
 
-               
-                iterateToNodePosition(position - 1, ref tmp);
 
-                Node next = tmp.next;
-                Node prev = tmp;
-                prev.next = newNode;
-                newNode.next = next;
-                newNode.prev = prev;
-            }
+            iterateToNodePosition(position - 1, ref tmp);
 
-        public  void reverseDoubleLinkedList(Node current) 
+            Node next = tmp.next;
+            Node prev = tmp;
+            prev.next = newNode;
+            newNode.next = next;
+            newNode.prev = prev;
+        }
+
+        public void reverseDoubleLinkedList()
         {
             Node prev = null;
             Node after = null;
-            current = head;
+            Node current = head;
 
-            while (current != null) 
+            while (current != null)
             {
                 after = current.next;
                 current.next = current.prev;
@@ -465,6 +465,30 @@ namespace LinkedList
             }
             head = prev;
         }
+
+        public void deleteNodeFromDoubleLinkedList(int position)
+        {
+            Node current = head;
+            Node next;
+            Node prev;
+
+            iterateToNodePosition(position - 1, ref current);
+
+            
+            prev = current.prev;
+            next = current.next;
+            if (prev != null)
+            {
+                prev.next = next;
+            }
+            if (next != null)
+            {
+                next.prev = prev;
+            }
+        
+        }
+
+
 
         public static void Main(string[] args)
         {
@@ -482,10 +506,13 @@ namespace LinkedList
 
             second.prev = doubleLinkedList.head;
             third.prev = second;
+            fourth.prev = third;
 
             doubleLinkedList.addValueAfterNodePositionInDoubleLinkedList(4, 10);
             doubleLinkedList.printCurrentList();
-            doubleLinkedList.reverseDoubleLinkedList(doubleLinkedList.head);
+            doubleLinkedList.deleteNodeFromDoubleLinkedList(5);
+            doubleLinkedList.printCurrentList();
+            doubleLinkedList.reverseDoubleLinkedList();
             doubleLinkedList.printCurrentList();
            
 
