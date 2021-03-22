@@ -26,6 +26,7 @@ namespace classes
         {
             this.Number = accountNumberSeed.ToString();
             accountNumberSeed++;
+            
 
             this.Owner = name;
             MakeDeposit(initialBalance, DateTime.Now, "Initial balance");
@@ -62,7 +63,7 @@ namespace classes
             foreach (var item in allTransactions)
             {
                 balance += item.Amount;
-                report.AppendLine($"{item.Date.ToShortDateString()}\t{item.Amount}\t{balance}\t{item.Notes}");
+                report.AppendLine($"{item.Date.ToShortDateString()}\t{item.AmountForHumans}\t{balance}\t{item.Notes}");
             }
 
             return report.ToString();
