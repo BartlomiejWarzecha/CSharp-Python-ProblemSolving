@@ -9,24 +9,45 @@ namespace FirstStack
     {
         static void Main(string[] args)
         {
+            string testInfixString = "a-b--+++c*d+g/";
+            infixToPostfix(testInfixString);
+        }
 
-        Stack firstStack = new Stack();
-            firstStack.Push("string");
-            firstStack.Push(78);
-            firstStack.Push(78.32);
-            firstStack.Push('C');
-            firstStack.Push(null);
+        public static void infixToPostfix(string infixText)
+        {
 
-            foreach (var item in firstStack)
+            Stack stack = new Stack();
+            string postFix;
+            string temp;
+
+            for (int i = 0; i < infixText.Length; i++)
             {
-                Console.WriteLine(item);
+                if (infixText[i] == '+' || infixText[i] == '-')
+                {
+                    stack.Push(infixText[i]);
+                    continue;
+                }
+                if (infixText[i] == '*' || infixText[i] == '/') 
+                {
+                    temp = (string)stack.Peek();
+                    stack.Push(infixText[i]);
+
+                    if (temp == "+"
+                        || temp == "-")
+                    {
+                        while (stack.Count > 0) 
+                        {
+                            postFix += stack.Pop(); 
+                        }
+                    
+                    }
+                }
+                postFix += infixText[i];
             }
 
-            Console.WriteLine($"Coount of elements before pop method {firstStack.Count}");
+            Console.WriteLine(postFix);
 
-            firstStack.Pop();
 
-            Console.WriteLine($"Coount of elements after pop method {firstStack.Count}");
         }
     }
 }
