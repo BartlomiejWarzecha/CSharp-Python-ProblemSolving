@@ -9,7 +9,7 @@ namespace FirstStack
     {
         static void Main(string[] args)
         {
-            string testInfixString = "a-b--+++c*d+g//";
+            string testInfixString = "a-b--++(+c*d)+g//";
             Console.WriteLine(testInfixString);
             infixToPostfix(testInfixString);
         }
@@ -20,6 +20,7 @@ namespace FirstStack
             Stack stack = new Stack();
             string postFix = "";
             char temp;
+            bool parenthesis = false;
 
             for (int i = 0; i < infixText.Length; i++)
             {
@@ -29,32 +30,40 @@ namespace FirstStack
                     postFix += infixText[i];
                     continue;
                 }
-                if (infixText[i] == '+' || infixText[i] == '-')
+                if (infixText[i] == '+' || infixText[i] == '-' || infixText[i] == '(')
                 {
                     stack.Push(infixText[i]);
+                    if (infixText[i] == '(') {
+                        parenthesis = true;
+                    }
                     continue;
                 }
-                if (stack.Count > 0)
+                if (infixText[i] == ')')
                 {
-                    if (infixText)
+                    while ((char)stack.Peek() != '(') 
+                    {
+                        postFix += stack.Pop();
+                    }
+                    postFix += stack.Pop();
+                    parenthesis = false;
+                    continue;
+                }
+                if (stack.Count > 0 && parenthesis == false)
+                {
+                    if (infixText[i] == '^' )
+                    {
+                        while (stack.Count != 0)
+                        {
+                            postFix += stack.Pop();
+                        }
+                        continue;
+                    }
                     if (infixText[i] == '*' || infixText[i] == '/')
                     {
-
                         temp = (char)stack.Peek();
                         stack.Push(infixText[i]);
 
-                        if (temp == '+'
-                            || temp == '-')
-                        {
-                            while (stack.Count != 0)
-                            {
-                                postFix += stack.Pop();
-                            }
-                            continue;
-                        }
-                        
-                        if (temp == '*'
-                            || temp == '/')
+                        if (temp != '^')
                         {
                             while (stack.Count != 0)
                             {
@@ -64,7 +73,8 @@ namespace FirstStack
                         }
                     }
                 }
-                else {
+                else
+                {
                     stack.Push(infixText[i]);
                 }
                 postFix += infixText[i];
