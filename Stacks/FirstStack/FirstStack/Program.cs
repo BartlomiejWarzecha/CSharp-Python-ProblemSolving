@@ -9,11 +9,11 @@ namespace FirstStack
     {
         static void Main(string[] args)
         {
-            string testInfixString = "a+b*(c^d-e)^(f+g*h)-i";
-            Console.WriteLine(testInfixString);
-            infixToPostfix(testInfixString);
+            string textBeforeReverse = "TextBefore";
+            string textAfterReverse = reverseString(textBeforeReverse);
+            Console.WriteLine(textBeforeReverse);
+            Console.WriteLine(textAfterReverse);
         }
-
         public static void infixToPostfix(string infixText)
         {
 
@@ -95,6 +95,22 @@ namespace FirstStack
             Console.WriteLine(postFix);
 
 
+        }
+
+        public static string reverseString(string text) 
+        {
+            Stack stack = new Stack();
+            string reverseString = "";
+
+            for (int i = 0; i < text.Length; i++)
+            {
+                stack.Push(text[i]);
+            }
+            for (int i = 0; i < text.Length; i++)
+            {
+                reverseString += stack.Pop();
+            }
+            return reverseString;
         }
     }
 }
