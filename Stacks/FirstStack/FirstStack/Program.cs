@@ -9,7 +9,7 @@ namespace FirstStack
     {
         static void Main(string[] args)
         {
-            string testInfixString = "a-b--++(+c*d)+g//";
+            string testInfixString = "a+b*(c^d-e)^(f+g*h)-i";
             Console.WriteLine(testInfixString);
             infixToPostfix(testInfixString);
         }
@@ -24,31 +24,37 @@ namespace FirstStack
 
             for (int i = 0; i < infixText.Length; i++)
             {
-                if (((int)infixText[i] >= 65 && (int)infixText[i] <= 90)
-                    || ((int)infixText[i] >= 97 && (int)infixText[i] <= 122))
-                {
-                    postFix += infixText[i];
-                    continue;
-                }
-                if (infixText[i] == '+' || infixText[i] == '-' || infixText[i] == '(')
+
+                if (infixText[i] == '+' || infixText[i] == '-')
                 {
                     stack.Push(infixText[i]);
-                    if (infixText[i] == '(') {
-                        parenthesis = true;
-                    }
                     continue;
                 }
-                if (infixText[i] == ')')
+                if (infixText[i] == '(')
                 {
-                    while ((char)stack.Peek() != '(') 
+                    while (stack.Count != 0)
                     {
                         postFix += stack.Pop();
                     }
-                    postFix += stack.Pop();
+                    postFix += '(';
+
+                    parenthesis = true;
+                    continue;
+                }
+                if (infixText[i] == ')' && parenthesis == true)
+                {
+                                       
+                    while (stack.Count != 0)
+                    {
+                        postFix += stack.Pop();
+                    }
+
+                    postFix += ')';
+
                     parenthesis = false;
                     continue;
                 }
-                if (stack.Count > 0 && parenthesis == false)
+                if (stack.Count > 0 )
                 {
                     if (infixText[i] == '^' )
                     {
@@ -72,12 +78,18 @@ namespace FirstStack
                             continue;
                         }
                     }
+
                 }
-                else
+                if (((int)infixText[i] >= 65 && (int)infixText[i] <= 90)
+                || ((int)infixText[i] >= 97 && (int)infixText[i] <= 122))
                 {
-                    stack.Push(infixText[i]);
+                    postFix += infixText[i];
+                    continue;
                 }
-                postFix += infixText[i];
+            }
+            while (stack.Count > 0)
+            {
+                postFix += stack.Pop();
             }
 
             Console.WriteLine(postFix);
