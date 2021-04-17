@@ -9,10 +9,19 @@ namespace FirstStack
     {
         static void Main(string[] args)
         {
-            string textBeforeReverse = "TextBefore";
-            string textAfterReverse = reverseString(textBeforeReverse);
-            Console.WriteLine(textBeforeReverse);
-            Console.WriteLine(textAfterReverse);
+            Stack stack = new Stack();
+            Stack stack2 = new Stack();
+
+            stack.Push('1');
+            stack.Push('2');
+            stack.Push('3');
+            stack.Push('4');
+
+            foreach (var item in stack)
+            {
+                Console.WriteLine(item);
+            }
+
         }
         public static void infixToPostfix(string infixText)
         {
@@ -96,7 +105,6 @@ namespace FirstStack
 
 
         }
-
         public static string reverseString(string text) 
         {
             Stack stack = new Stack();
@@ -112,5 +120,11 @@ namespace FirstStack
             }
             return reverseString;
         }
+
+        public push1(int x) 
+        {
+        
+        }
+
     }
 }
