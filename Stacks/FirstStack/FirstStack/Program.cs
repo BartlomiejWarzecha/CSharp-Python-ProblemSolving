@@ -9,19 +9,42 @@ namespace FirstStack
     {
         static void Main(string[] args)
         {
-            Stack stack = new Stack();
-            Stack stack2 = new Stack();
+            StackArray firstStackArray = new StackArray(10);
 
-            stack.Push('1');
-            stack.Push('2');
-            stack.Push('3');
-            stack.Push('4');
+            firstStackArray.push1(5);
+            firstStackArray.push1(6);
+            firstStackArray.push1(7);
+            firstStackArray.push1(2);
+            firstStackArray.push1(333);
+            firstStackArray.push1(5);
 
-            foreach (var item in stack)
-            {
-                Console.WriteLine(item);
-            }
+            firstStackArray.printStackArray();
 
+            Console.WriteLine("");
+            Console.WriteLine(firstStackArray.pop1());
+            Console.WriteLine(firstStackArray.pop1());
+            Console.WriteLine(firstStackArray.pop1());
+
+            Console.WriteLine("");
+            firstStackArray.push2(10);
+            firstStackArray.push2(11);
+            firstStackArray.push2(16);
+            firstStackArray.push2(17);
+            firstStackArray.push2(17);
+
+            firstStackArray.printStackArray();
+            
+            Console.WriteLine("");
+            Console.WriteLine(firstStackArray.pop2());
+            Console.WriteLine(firstStackArray.pop2());
+            Console.WriteLine(firstStackArray.pop2());
+            Console.WriteLine(firstStackArray.pop2());
+            Console.WriteLine(firstStackArray.pop2());
+            Console.WriteLine(firstStackArray.pop2());
+
+            Console.WriteLine("");
+            firstStackArray.push2(17);
+            Console.WriteLine(firstStackArray.pop2());
         }
         public static void infixToPostfix(string infixText)
         {
@@ -105,6 +128,7 @@ namespace FirstStack
 
 
         }
+        public static void prefixToPostfix(string prefixText) { }
         public static string reverseString(string text) 
         {
             Stack stack = new Stack();
@@ -119,11 +143,6 @@ namespace FirstStack
                 reverseString += stack.Pop();
             }
             return reverseString;
-        }
-
-        public push1(int x) 
-        {
-        
         }
 
     }
