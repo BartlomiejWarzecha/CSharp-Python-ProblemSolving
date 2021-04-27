@@ -9,42 +9,9 @@ namespace FirstStack
     {
         static void Main(string[] args)
         {
-            StackArray firstStackArray = new StackArray(10);
 
-            firstStackArray.push1(5);
-            firstStackArray.push1(6);
-            firstStackArray.push1(7);
-            firstStackArray.push1(2);
-            firstStackArray.push1(333);
-            firstStackArray.push1(5);
 
-            firstStackArray.printStackArray();
 
-            Console.WriteLine("");
-            Console.WriteLine(firstStackArray.pop1());
-            Console.WriteLine(firstStackArray.pop1());
-            Console.WriteLine(firstStackArray.pop1());
-
-            Console.WriteLine("");
-            firstStackArray.push2(10);
-            firstStackArray.push2(11);
-            firstStackArray.push2(16);
-            firstStackArray.push2(17);
-            firstStackArray.push2(17);
-
-            firstStackArray.printStackArray();
-            
-            Console.WriteLine("");
-            Console.WriteLine(firstStackArray.pop2());
-            Console.WriteLine(firstStackArray.pop2());
-            Console.WriteLine(firstStackArray.pop2());
-            Console.WriteLine(firstStackArray.pop2());
-            Console.WriteLine(firstStackArray.pop2());
-            Console.WriteLine(firstStackArray.pop2());
-
-            Console.WriteLine("");
-            firstStackArray.push2(17);
-            Console.WriteLine(firstStackArray.pop2());
         }
         public static void infixToPostfix(string infixText)
         {
@@ -75,7 +42,7 @@ namespace FirstStack
                 }
                 if (infixText[i] == ')' && parenthesis == true)
                 {
-                                       
+
                     while (stack.Count != 0)
                     {
                         postFix += stack.Pop();
@@ -86,9 +53,9 @@ namespace FirstStack
                     parenthesis = false;
                     continue;
                 }
-                if (stack.Count > 0 )
+                if (stack.Count > 0)
                 {
-                    if (infixText[i] == '^' )
+                    if (infixText[i] == '^')
                     {
                         while (stack.Count != 0)
                         {
@@ -129,7 +96,7 @@ namespace FirstStack
 
         }
         public static void prefixToPostfix(string prefixText) { }
-        public static string reverseString(string text) 
+        public static string reverseString(string text)
         {
             Stack stack = new Stack();
             string reverseString = "";
@@ -145,5 +112,30 @@ namespace FirstStack
             return reverseString;
         }
 
+        public static Stack deleteMiddleValue(Stack stack)
+        {
+            int length = stack.Count;
+            var temp = object;
+            Stack stack2 = new Stack();
+                
+        
+            if (length % 2 == 0)
+            {
+                for (int i = 0; i < length/2; i++)
+                {
+                    temp = stack.Pop();
+                    stack2 += temp;
+                }
+
+            }
+            else { 
+            
+            
+            }
+
+
+    
+        }
     }
+    
 }
