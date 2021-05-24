@@ -59,11 +59,11 @@ namespace classes
             var report = new System.Text.StringBuilder();
 
             decimal balance = 0;
-            report.appendline("date\t\tamount\tbalance\tnote");
-            foreach (var item in alltransactions)
+            report.AppendLine("date\t\tamount\tbalance\tnote");
+            foreach (var item in allTransactions)
             {
-                balance += item.amount;
-                report.appendline($"{item.date.toshortdatestring()}\t{item.amountforhumans}\t{balance}\t{item.notes}");
+                balance += item.Amount;
+                report.AppendLine($"{item.Date.ToShortDateString()}\t{item.AmountForHumans}\t{balance}\t{item.Notes}");
             }
 
             return report.ToString();

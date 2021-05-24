@@ -11,7 +11,7 @@ namespace ConsoleUI
     {
         static void Main(string[] args)
         {
-            List<IPhysicalProductModel> cart = AddSampleData();
+            List<IProductModel> cart = AddSampleData();
             CustomerModel customer = GetCustomer();
 
             foreach (PhysicalProductModel prod in cart)
@@ -34,9 +34,9 @@ namespace ConsoleUI
             };
         }
 
-        private static List<IPhysicalProductModel> AddSampleData()
+        private static List<IProductModel> AddSampleData()
         {
-            List<IPhysicalProductModel> output = new List<IPhysicalProductModel>();
+            List<IProductModel> output = new List<IProductModel>();
 
             output.Add(new PhysicalProductModel { Title = "Nerf Football" });
             output.Add(new PhysicalProductModel { Title = "IAmTimCorey T-Shirt" });

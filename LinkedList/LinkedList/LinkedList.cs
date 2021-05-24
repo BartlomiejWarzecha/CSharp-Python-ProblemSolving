@@ -439,7 +439,6 @@ namespace LinkedList
             Node tmp = head;
             Node newNode = new Node(data);
 
-
             iterateToNodePosition(position - 1, ref tmp);
 
             Node next = tmp.next;

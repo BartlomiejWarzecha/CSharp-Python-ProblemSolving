@@ -1,5 +1,5 @@
 using NUnit.Framework;
-
+using BankStuffLibrary;
 {
     public class Tests
     {
@@ -9,8 +9,9 @@ using NUnit.Framework;
         }
 
         [Test]
-        public void Test1()
+        public void CantTakeMoreThanYouHave()
         {
+
             Assert.Pass();
         }
     }

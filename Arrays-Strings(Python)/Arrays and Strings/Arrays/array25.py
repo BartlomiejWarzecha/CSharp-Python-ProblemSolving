@@ -1,0 +1,3 @@
+
+
+array = int(input())

@@ -41,7 +41,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CustomerModel.cs" />
-    <Compile Include="IPhysicalProductModel.cs" />
+    <Compile Include="DigitalProductModel.cs" />
+    <Compile Include="ICustomerModel.cs" />
+    <Compile Include="IDigitalProductModel1.cs" />
+    <Compile Include="IProductModel.cs" />
     <Compile Include="PhysicalProductModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

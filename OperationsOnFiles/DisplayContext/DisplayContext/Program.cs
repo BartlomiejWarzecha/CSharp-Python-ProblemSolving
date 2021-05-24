@@ -5,26 +5,7 @@ namespace DisplayContext
 {
     class Program
     {
-        public static void displayFileText(string fileName) 
-        {
-            try
-            {
-                using (StreamReader sr = new StreamReader(fileName))
-                {
-                    string line;
-                    while ((line = sr.ReadLine()) != null)
-                    {
-                        Console.WriteLine(line);
-                    }
-                }
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine("The file could not be read:");
-                Console.WriteLine(e.Message);
-            }
 
-        }
         static void Main(string[] args)
         {
             string nameOfFile;
