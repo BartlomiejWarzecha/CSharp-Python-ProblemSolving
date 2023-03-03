@@ -1,2 +1,2 @@
 
-# C sharp ProblemSolving
+# C sharp and python methods for problem solving
